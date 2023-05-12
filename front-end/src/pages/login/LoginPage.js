@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './LoginPage.css';
 
 function LoginPage() {
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const [error, setError] = useState('');
+  const history = useHistory();
 
   const MIN_PASS_LENGTH = 6;
   const HTTP_NOT_FOUND = 404;
@@ -67,7 +69,7 @@ function LoginPage() {
         return;
       }
 
-      // Lógica adicional em caso de login bem-sucedido
+      history.push('/customer/products');
     } catch {
       setError('Ocorreu um erro ao fazer login');
     }

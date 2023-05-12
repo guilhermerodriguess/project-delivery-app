@@ -10,7 +10,6 @@ class AuthController {
 
     try {
       const user = await this.userService.loginUser(email, password);
-      console.log(user);  
 
       if (!user) {
         return res.status(404).json({ error: 'Credenciais inválidas' });
