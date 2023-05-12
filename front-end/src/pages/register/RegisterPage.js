@@ -5,6 +5,7 @@ import './RegisterPage.css';
 function RegisterPage() {
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
+  const [nameValue, setNameValue] = useState('');
 
   const history = useHistory(); // Obtém o objeto de histórico
 
@@ -14,6 +15,10 @@ function RegisterPage() {
 
   const handlePasswordChange = (e) => {
     setPasswordValue(e.target.value);
+  };
+
+  const handleNameChange = (e) => {
+    setNameValue(e.target.value);
   };
 
   const handleRegister = (e) => {
@@ -29,6 +34,18 @@ function RegisterPage() {
       <h1>Registro</h1>
       <form onSubmit={ handleRegister }>
         <div className="input-wrapper">
+          <label htmlFor="name">
+            Nome
+            <input
+              type="text"
+              id="name"
+              value={ nameValue }
+              onChange={ handleNameChange }
+              data-testid="common_register__input-name"
+            />
+          </label>
+        </div>
+        <div className="input-wrapper">
           <label htmlFor="email">
             Email
             <input
@@ -36,7 +53,7 @@ function RegisterPage() {
               id="email"
               value={ emailValue }
               onChange={ handleEmailChange }
-              data-testid="register__input-email"
+              data-testid="common_register__input-email"
             />
           </label>
         </div>
@@ -48,18 +65,22 @@ function RegisterPage() {
               id="password"
               value={ passwordValue }
               onChange={ handlePasswordChange }
-              data-testid="register__input-password"
+              data-testid="common_register__input-password"
             />
           </label>
         </div>
         <button
           type="submit"
           className="button-register"
-          data-testid="register__button-register"
+          data-testid="common_register__button-register"
         >
           Registrar
         </button>
       </form>
+      <div
+        data-testid="common_register__element-invalid_register"
+        className="hidden"
+      />
       <div>
         Já possui uma conta?
         {' '}
