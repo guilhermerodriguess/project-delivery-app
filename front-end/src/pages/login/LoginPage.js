@@ -16,6 +16,7 @@ function LoginPage() {
           <label htmlFor="username">
             Username:
             <input
+              data-testid="common_login__input-email"
               type="text"
               id="username"
               value={ username }
@@ -27,6 +28,7 @@ function LoginPage() {
           <label htmlFor="password">
             Password:
             <input
+              data-testid="common_login__input-password"
               type="password"
               id="password"
               value={ password }
@@ -34,9 +36,22 @@ function LoginPage() {
             />
           </label>
         </div>
-        <button type="submit">Login</button>
+        <button
+          data-testid="common_login__button-login"
+          type="submit"
+        >
+          Login
+        </button>
       </form>
+      <button
+        type="button"
+        data-testid="common_login__button-register"
+      >
+        Ainda não tenho conta
+      </button>
+      <div data-testid="common_login__element-invalid-email" className="error-message" />
     </div>
+
   );
 }
 
