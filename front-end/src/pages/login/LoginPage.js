@@ -7,6 +7,7 @@ function LoginPage() {
   const [error, setError] = useState('');
 
   const MIN_PASS_LENGTH = 6;
+  const HTTP_NOT_FOUND = 404;
 
   const validateEmail = (email) => {
     // Validação de email incompleto e formato inválido
@@ -36,7 +37,7 @@ function LoginPage() {
     }
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     // Verifica se o email e a senha são válidos antes de prosseguir com o login
 
@@ -47,6 +48,28 @@ function LoginPage() {
 
     if (!validatePassword(passwordValue)) {
       setError('Senha deve ter pelo menos 6 caracteres');
+    }
+
+    try {
+      const response = await fetch('http://localhost:3001/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: emailValue,
+          password: passwordValue,
+        }),
+      });
+
+      if (response.status === HTTP_NOT_FOUND) {
+        setError('Credenciais inválidas');
+        return;
+      }
+
+      // Lógica adicional em caso de login bem-sucedido
+    } catch {
+      setError('Ocorreu um erro ao fazer login');
     }
   };
 
