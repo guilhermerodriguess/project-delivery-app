@@ -82,6 +82,7 @@ function LoginPage() {
           type="submit"
           disabled={ !validateEmail(emailValue) || !validatePassword(passwordValue) }
           data-testid="common_login__button-login"
+          className="button-login"
         >
           Login
         </button>
