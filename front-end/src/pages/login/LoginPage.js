@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import './LoginPage.css';
 
 function LoginPage() {
@@ -116,7 +116,7 @@ function LoginPage() {
           type="button"
           data-testid="common_login__button-register"
         >
-          Ainda não tenho conta
+          <Link className="link-style" to="/register">Ainda não tenho conta</Link>
         </button>
       </form>
       <div
