@@ -12,6 +12,7 @@ function RegisterPage() {
 
   const MIN_NAME_LENGTH = 12;
   const MIN_PASS_LENGTH = 6;
+  const HTTP_CREATED = 201;
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -48,19 +49,42 @@ function RegisterPage() {
     }
   };
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    // Lógica de registro do usuário aqui
-
-    // Após o registro bem-sucedido, redireciona para a página de produtos do cliente
-    history.push('/customer/products');
-  };
-
   const isFormValid = () => (
     nameValue.length >= MIN_NAME_LENGTH
       && validateEmail(emailValue)
       && passwordValue.length >= MIN_PASS_LENGTH
   );
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    if (!isFormValid()) {
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:3001/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: nameValue,
+          email: emailValue,
+          password: passwordValue,
+        }),
+      });
+
+      if (response.status === HTTP_CREATED) {
+        // Registro bem-sucedido, redireciona para a página de produtos do cliente
+        history.push('/customer/products');
+      } else {
+        setError('Erro ao realizar o cadastro');
+      }
+    } catch {
+      setError('Erro ao realizar o cadastro');
+    }
+  };
 
   return (
     <div className="register-container">

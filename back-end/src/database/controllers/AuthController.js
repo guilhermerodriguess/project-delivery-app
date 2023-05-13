@@ -9,7 +9,7 @@ class AuthController {
     const { email, password } = req.body;
 
     try {
-      const user = await this.userService.loginUser(email, password);
+      const user = await this.userService.login(email, password);
 
       if (!user) {
         return res.status(404).json({ error: 'Credenciais inválidas' });
@@ -18,6 +18,22 @@ class AuthController {
       return res.status(200).json({ message: 'Login bem-sucedido' });
     } catch (error) {
       return res.status(500).json({ message: 'Ocorreu um erro ao fazer login' });
+    }
+  }
+
+  async register(req, res) {
+    const { name, email, password } = req.body;
+
+    try {
+      const newUser = await this.userService.register(name, email, password);
+
+      if (!newUser) {
+        return res.status(400).json({ error: 'Email já em uso' });
+      }
+
+      return res.status(201).json({ message: 'Usuário registrado com sucesso' });
+    } catch (error) {
+      return res.status(500).json({ message: 'Ocorreu um erro ao registrar o usuário' });
     }
   }
 }
