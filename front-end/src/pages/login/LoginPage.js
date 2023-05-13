@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
+import axios from 'axios';
 import './LoginPage.css';
 
 function LoginPage() {
@@ -53,21 +54,23 @@ function LoginPage() {
     }
 
     try {
-      const response = await fetch('http://localhost:3001/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: emailValue,
-          password: passwordValue,
-        }),
+      const response = await axios.post('http://localhost:3001/login', {
+        email: emailValue,
+        password: passwordValue,
       });
 
       if (response.status === HTTP_NOT_FOUND) {
         setError('Credenciais inválidas');
         return;
       }
+      // Login bem-sucedido
+      const { name, email, role, token } = response.data;
+
+      // Armazenar os dados da pessoa usuária no localStorage
+      const userData = { name, email, role, token };
+      localStorage.setItem('user', JSON.stringify(userData));
+
+      axios.defaults.headers.common.Authorization = token; // Define o token no cabeçalho das requisições
 
       history.push('/customer/products');
     } catch {

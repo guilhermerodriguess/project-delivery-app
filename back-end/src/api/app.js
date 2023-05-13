@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const loginRouter = require('../database/routes/LoginRouter');
-const registerRouter = require('../database/routes/RegisterRouter');
-const customerRouter = require('../database/routes/CustomerRouter');
+const loginRouter = require('./routes/LoginRouter');
+const userRouter = require('./routes/UserRouter');
+const productRouter = require('./routes/ProductRouter');
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/login', loginRouter);
-app.use('/register', registerRouter);
-app.use('/customer', customerRouter);
+app.use('/register', userRouter);
+app.use('/customer', productRouter);
 
 module.exports = app;
