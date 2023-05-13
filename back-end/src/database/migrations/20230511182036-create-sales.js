@@ -6,7 +6,7 @@ module.exports = {
         autoIncrement: true, 
         primaryKey: true, 
         type: Sequelize.INTEGER },
-      userId: { 
+      user_id: { 
         type: Sequelize.INTEGER, 
         allowNull: false, 
         onUpdate: 'CASCADE',
@@ -15,7 +15,7 @@ module.exports = {
           model: 'users', 
           key: 'id' }, 
       },
-      sellerId: { 
+      seller_id: { 
         type: Sequelize.INTEGER, 
         allowNull: false, 
         onUpdate: 'CASCADE',
@@ -24,10 +24,10 @@ module.exports = {
           model: 'users', 
           key: 'id' }, 
       },
-      totalPrice: { type: Sequelize.DECIMAL(9, 2), allowNull: false },
-      deliveryAddress: { type: Sequelize.STRING(100), allowNull: false },
-      deliveryNumber: { type: Sequelize.STRING(50), allowNull: false },
-      saleDate: { type: Sequelize.DATE, allowNull: false },
+      total_price: { type: Sequelize.DECIMAL(9, 2), allowNull: false },
+      delivery_address: { type: Sequelize.STRING(100), allowNull: false },
+      delivery_number: { type: Sequelize.STRING(50), allowNull: false },
+      sale_date: { type: Sequelize.DATE, allowNull: false },
       status: { type: Sequelize.STRING(50), allowNull: false },
     });
   },

@@ -94,8 +94,8 @@ function RegisterPage() {
 
   return (
     <div className="register-container">
-      <h1>Registro</h1>
-      <form onSubmit={ handleRegister }>
+      <h1>Cadastro</h1>
+      <form className="form-container" onSubmit={ handleRegister }>
         <div className="input-wrapper">
           <label htmlFor="name">
             Nome

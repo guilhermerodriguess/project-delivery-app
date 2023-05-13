@@ -4,7 +4,7 @@ module.exports = {
       id: { allowNull: false, autoIncrement: true, primaryKey: true, type: Sequelize.INTEGER },
       name: { type: Sequelize.STRING(100), allowNull: false, unique: true },
       price: { type: Sequelize.DECIMAL(4, 2), allowNull: false },
-      urlImage: { type: Sequelize.STRING(200), allowNull: false, defaultValue: '' },
+      url_image: { type: Sequelize.STRING(200), allowNull: false, defaultValue: '' },
     });
   },
 

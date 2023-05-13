@@ -78,7 +78,7 @@ function LoginPage() {
   return (
     <div className="login-container">
       <h1>Login</h1>
-      <form onSubmit={ handleLogin }>
+      <form className="form-container" onSubmit={ handleLogin }>
         <div className="input-wrapper">
           <label htmlFor="email">
             Email

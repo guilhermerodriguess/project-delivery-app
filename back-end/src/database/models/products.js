@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: DataTypes.STRING,
       price: DataTypes.DECIMAL,
-      urlImage: DataTypes.STRING,
+      url_image: DataTypes.STRING
     },
     {
       timestamps: false,
@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   // Associação: Um produto pode ter várias vendas (SalesProduct)
   Product.associate = (models) => {
     Product.hasMany(models.SalesProduct, {
-      foreignKey: 'productId',
-      as: 'salesProducts',
+      foreignKey: 'product_id',
+      as: 'sales_products',
     });
   };
 
