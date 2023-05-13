@@ -13,6 +13,7 @@ function RegisterPage() {
   const MIN_NAME_LENGTH = 12;
   const MIN_PASS_LENGTH = 6;
   const HTTP_CREATED = 201;
+  const STATUS_CONFLICT = 409;
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -74,6 +75,11 @@ function RegisterPage() {
           password: passwordValue,
         }),
       });
+
+      if (response.status === STATUS_CONFLICT) {
+        setError('Usuário já existe. Por favor, escolha outro nome ou email.');
+        return;
+      }
 
       if (response.status === HTTP_CREATED) {
         // Registro bem-sucedido, redireciona para a página de produtos do cliente

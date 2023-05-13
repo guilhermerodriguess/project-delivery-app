@@ -1,4 +1,5 @@
 const { User } = require('../models');
+const { Op } = require('sequelize');
 const md5 = require('md5');
 
 class UserService {
@@ -20,10 +21,18 @@ class UserService {
 
   async register(name, email, password) {
     try {
-      // Verifica se o email já está em uso
-      const existingUser = await User.findOne({ where: { email } });
+      // Verifica se já existe um usuário com o mesmo nome ou email
+      const existingUser = await User.findOne({
+        where: { 
+          [Op.or]: [
+            { name: name },
+            { email: email }
+          ]
+        }
+      });
+
       if (existingUser) {
-        return null; // Retorna null se o email já está em uso
+        return null; // Retorna null se o usuário já existe
       }
 
       // Cria o usuário com a senha convertida para hash MD5
@@ -35,6 +44,7 @@ class UserService {
 
       return newUser; // Retorna o novo usuário criado
     } catch (error) {
+      console.log(error)
       throw new Error('Ocorreu um erro ao registrar o usuário');
     }
   }

@@ -28,7 +28,7 @@ class AuthController {
       const newUser = await this.userService.register(name, email, password);
 
       if (!newUser) {
-        return res.status(400).json({ error: 'Email já em uso' });
+        return res.status(409).json({ error: 'Nome ou email já em uso' });
       }
 
       return res.status(201).json({ message: 'Usuário registrado com sucesso' });
