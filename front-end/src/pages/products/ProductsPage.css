@@ -10,7 +10,9 @@
   border: 1px solid #ccc;
   box-sizing: border-box;
   display: inline-block;
+  height: auto;
   margin: 0 10px 20px;
+  overflow: hidden;
   padding: 10px;
   width: calc(25% - 20px);
 }
@@ -21,6 +23,8 @@
 
 .product-list li img {
   height: auto;
+  max-height: 300px;
+  object-fit: contain;
   width: 100%;
 }
 

@@ -94,12 +94,10 @@ function ProductList() {
                 {product.name}
               </h3>
               <p data-testid={ `customer_products__element-card-price-${product.id}` }>
-                Price:
-                {' '}
                 {product.price}
               </p>
               <img
-                src={ product.urlImage }
+                src={ product.url_image }
                 alt={ product.name }
                 data-testid={ `customer_products__img-card-bg-image-${product.id}` }
               />
