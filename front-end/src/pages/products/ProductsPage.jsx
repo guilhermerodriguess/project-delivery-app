@@ -94,7 +94,7 @@ function ProductList() {
                 {product.name}
               </h3>
               <p data-testid={ `customer_products__element-card-price-${product.id}` }>
-                {product.price}
+                {product.price.replace(/\./, ',')}
               </p>
               <img
                 src={ product.url_image }
@@ -123,6 +123,7 @@ function ProductList() {
                 </button>
                 <input
                   type="number"
+                  value={ 0 }
                   onChange={ (event) => handleQuantityChange(event, product.id) }
                   data-testid={
                     `customer_products__input-card-quantity-${product.id}`
