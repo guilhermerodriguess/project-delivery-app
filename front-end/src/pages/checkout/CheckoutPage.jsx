@@ -46,14 +46,12 @@ function CheckoutPage() {
           <h2>Informações do Carrinho</h2>
           <CartTable cart={ cart } />
           <div>
-            <p>
-              Valor Total: R$
-              {' '}
-              <span data-testid="customer_checkout__element-order-total-price">
+            Valor Total: R$
+            {' '}
+            <span data-testid="customer_checkout__element-order-total-price">
 
-                {totalPrice.toFixed(2).replace('.', ',')}
-              </span>
-            </p>
+              {totalPrice.toFixed(2).replace('.', ',')}
+            </span>
           </div>
         </div>
         <div>
