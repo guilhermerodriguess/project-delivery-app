@@ -1,33 +1,45 @@
 .navbar {
-  align-items: center;
-  background-color: #f2f2f2;
+  background-color: var(--primary-color);
+  color: var(--text-light);
   display: flex;
+  font-weight: 700;
+  height: 80px;
   justify-content: space-between;
-  padding: 10px;
 }
 
 .navbar-left {
   display: flex;
+  font-size: 28px;
+  height: 100%;
+  line-height: 80px;
+  vertical-align: center;
 }
 
 .nav-item {
-  background-color: #ccc;
+  background-color: var(--primary-color);
   color: inherit;
-  margin-right: 10px;
-  padding: 5px 10px;
+  padding: 0 20px;
   text-decoration: none;
 }
 
 .nav-item.active {
-  background-color: red;
-  color: white;
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
 }
 
 .navbar-right {
-  align-items: center;
   display: flex;
+  font-size: 28px;
+  height: 100%;
+  line-height: 80px;
 }
 
 .username {
-  margin-right: 10px;
+  background-color: var(--tertiary-color);
+  font-weight: 400;
+}
+
+.logout {
+  background-color: var(--quaternary-color);
+  font-weight: 500;
 }

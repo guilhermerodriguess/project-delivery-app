@@ -1,5 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import './Navbar.css';
 
 const handleLogout = () => {
@@ -8,6 +8,11 @@ const handleLogout = () => {
 };
 
 function Navbar() {
+  const [activeLink, setActiveLink] = useState('products');
+
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
+  };
   // Obtém os dados da pessoa usuária armazenados no localStorage
   const userData = JSON.parse(localStorage.getItem('user'));
 
@@ -20,14 +25,16 @@ function Navbar() {
         <Link
           to="/customer/products"
           data-testid="customer_products__element-navbar-link-products"
-          className="nav-item active"
+          className={ `nav-item ${activeLink === 'products' ? 'active' : ''}` }
+          onClick={ () => handleLinkClick('products') }
         >
           Produtos
         </Link>
         <Link
           to="/customer/orders"
           data-testid="customer_products__element-navbar-link-orders"
-          className="nav-item"
+          className={ `nav-item ${activeLink === 'orders' ? 'active' : ''}` }
+          onClick={ () => handleLinkClick('orders') }
         >
           Meus Pedidos
         </Link>
@@ -35,7 +42,7 @@ function Navbar() {
       <div className="navbar-right">
         <div
           data-testid="customer_products__element-navbar-user-full-name"
-          className="username"
+          className="username nav-item"
         >
           {userName}
         </div>
@@ -43,7 +50,7 @@ function Navbar() {
           onClick={ handleLogout }
           to="/login"
           data-testid="customer_products__element-navbar-link-logout"
-          className="nav-item"
+          className="logout nav-item "
         >
           Sair
         </Link>
