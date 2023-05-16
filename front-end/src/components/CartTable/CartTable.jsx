@@ -34,19 +34,34 @@ function CartTable({ cart, handleRemoveFromCart }) {
             >
               {item.quantity}
             </td>
-            <td
-              data-testid={ `customer_checkout__element-order-table-unit-price-${index}` }
-            >
-              R$
+            <td>
+              <span>
+                R$
+              </span>
               {' '}
-              {parseFloat(item.price).toFixed(2)}
+              <span
+                data-testid={
+                  `customer_checkout__element-order-table-unit-price-${index}`
+                }
+              >
+                {parseFloat(item.price)
+                  .toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+              </span>
             </td>
-            <td
-              data-testid={ `customer_checkout__element-order-table-sub-total-${index}` }
-            >
-              R$
+            <td>
+              <span>
+                R$
+              </span>
               {' '}
-              {parseFloat(item.price).toFixed(2)}
+              <span
+                data-testid={
+                  `customer_checkout__element-order-table-sub-total-${index}`
+                }
+              >
+                {(
+                  parseFloat(item.price) * item.quantity
+                ).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+              </span>
             </td>
             <td>
               <button
