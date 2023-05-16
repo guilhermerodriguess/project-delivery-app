@@ -34,7 +34,14 @@ function CheckoutPage() {
     setTotalPrice(updatedTotalPrice);
   }, [cart]);
 
+  const handleRemoveFromCart = (productId) => {
+    const updatedCart = cart.filter((item) => item.id !== productId);
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+
   const handleSubmitOrder = () => {
+
   };
 
   return (
@@ -44,12 +51,11 @@ function CheckoutPage() {
         <h1>Checkout</h1>
         <div>
           <h2>Informações do Carrinho</h2>
-          <CartTable cart={ cart } />
+          <CartTable cart={ cart } handleRemoveFromCart={ handleRemoveFromCart } />
           <div>
             Valor Total: R$
             {' '}
             <span data-testid="customer_checkout__element-order-total-price">
-
               {totalPrice.toFixed(2).replace('.', ',')}
             </span>
           </div>
@@ -68,7 +74,6 @@ function CheckoutPage() {
         </div>
       </div>
     </>
-
   );
 }
 
