@@ -1,40 +1,31 @@
 module.exports = (sequelize, DataTypes) => {
   const Sale = sequelize.define('Sale', {
-    id: { type: DataTypes.INTEGER, primaryKey: true },
-    user_id: DataTypes.INTEGER,
-    seller_id: DataTypes.INTEGER,
-    total_price: DataTypes.DECIMAL,
-    delivery_address: DataTypes.STRING,
-    delivery_number: DataTypes.STRING,
-    sale_date: DataTypes.DATE,
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    userId: DataTypes.INTEGER,
+    sellerId: DataTypes.INTEGER,
+    totalPrice: DataTypes.DECIMAL,
+    deliveryAddress: DataTypes.STRING,
+    deliveryNumber: DataTypes.STRING,
+    saleDate: DataTypes.DATE,
     status: DataTypes.STRING
   },
   {
     timestamps: false,
-    tableName: 'sales',
     underscored: true,
   });
 
-  // Associação: Uma venda pertence a um usuário (User)
   Sale.associate = (models) => {
     Sale.belongsTo(models.User, {
-      foreignKey: 'user_id',
-      as: 'user',
+      foreignKey: 'userId',
     });
-
-    // Associação: Uma venda pertence a um vendedor (User)
+  
     Sale.belongsTo(models.User, {
-      foreignKey: 'seller_id',
-      as: 'seller',
+      foreignKey: 'sellerId',
     });
-
-    // Associação: Uma venda possui muitos produtos de venda (SalesProduct)
-    Sale.associate = (models) => {
-      Sale.hasMany(models.SalesProduct, {
-        foreignKey: 'sale_id',
-        as: 'sales_products',
-      });
-    };  
+  
+    Sale.hasMany(models.SalesProduct, {
+      foreignKey: 'saleId',
+    });
   };
 
   return Sale;

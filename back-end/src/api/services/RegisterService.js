@@ -2,7 +2,7 @@ const { Op } = require('sequelize');
 const md5 = require('md5');
 const { User } = require('../../database/models');
 
-const UserService = {
+const Register = {
 
   async register(name, email, password) {
     try {
@@ -29,4 +29,4 @@ const UserService = {
   },
 };
 
-module.exports = UserService;
+module.exports = Register;

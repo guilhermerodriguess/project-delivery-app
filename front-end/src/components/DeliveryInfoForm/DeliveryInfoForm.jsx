@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 function DeliveryInfoForm({
   selectedSeller,
@@ -8,8 +9,27 @@ function DeliveryInfoForm({
   setAddress,
   addressNumber,
   setAddressNumber,
-  handleSubmitOrder,
+  sendOrder,
 }) {
+  const [sellers, setSellers] = useState([]);
+
+  const fetchSellers = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/seller');
+      const sellerOptions = response.data.map((seller) => ({
+        id: seller.id,
+        name: seller.name,
+      }));
+      setSellers(sellerOptions);
+    } catch (error) {
+      console.error('Error fetching sellers:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSellers();
+  }, []);
+
   return (
     <form>
       <label htmlFor="seller">
@@ -21,9 +41,11 @@ function DeliveryInfoForm({
           onChange={ (e) => setSelectedSeller(e.target.value) }
         >
           <option value="">Selecione um vendedor</option>
-          <option value="1">Vendedor 1</option>
-          <option value="2">Vendedor 2</option>
-          <option value="3">Vendedor 3</option>
+          {sellers.map((seller) => (
+            <option key={ seller.id } value={ seller.id }>
+              {seller.name}
+            </option>
+          ))}
         </select>
       </label>
 
@@ -52,7 +74,7 @@ function DeliveryInfoForm({
       <button
         type="button"
         data-testid="customer_checkout__button-submit-order"
-        onClick={ handleSubmitOrder }
+        onClick={ sendOrder }
         disabled={ !selectedSeller || !address || !addressNumber }
       >
         Enviar Pedido
@@ -68,7 +90,7 @@ DeliveryInfoForm.propTypes = {
   setAddress: PropTypes.func.isRequired,
   addressNumber: PropTypes.string.isRequired,
   setAddressNumber: PropTypes.func.isRequired,
-  handleSubmitOrder: PropTypes.func.isRequired,
+  sendOrder: PropTypes.func.isRequired,
 };
 
 export default DeliveryInfoForm;

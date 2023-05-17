@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import DeliveryInfoForm from '../../components/DeliveryInfoForm/DeliveryInfoForm';
 import CartTable from '../../components/CartTable/CartTable';
 import Navbar from '../../components/Navbar/Navbar';
@@ -9,6 +11,8 @@ function CheckoutPage() {
   const [selectedSeller, setSelectedSeller] = useState('');
   const [address, setAddress] = useState('');
   const [addressNumber, setAddressNumber] = useState('');
+
+  const history = useHistory();
 
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem('cart'));
@@ -40,8 +44,45 @@ function CheckoutPage() {
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
-  const handleSubmitOrder = () => {
+  const fetchUserId = async (name, email) => {
+    try {
+      const response = await axios.put('http://localhost:3001/customer', {
+        name,
+        email,
+      });
 
+      return response.data.userId;
+    } catch (error) {
+      console.error('Erro ao buscar o ID do usuário:', error);
+      throw new Error('Failed to fetch user ID');
+    }
+  };
+
+  const sendOrder = async () => {
+    try {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const userId = await fetchUserId(user.name, user.email);
+
+      const order = {
+        userId,
+        sellerId: parseInt(selectedSeller, 10),
+        totalPrice,
+        deliveryAddress: address,
+        deliveryNumber: addressNumber,
+        products: cart.map((item) => ({
+          productId: item.id,
+          quantity: item.quantity,
+        })),
+      };
+
+      const response = await axios.post('http://localhost:3001/customer/orders', { order });
+
+      const { orderId } = response.data;
+
+      history.push(`/customer/orders/${orderId}`);
+    } catch (error) {
+      console.error('Erro ao enviar o pedido:', error);
+    }
   };
 
   return (
@@ -69,7 +110,7 @@ function CheckoutPage() {
             setAddress={ setAddress }
             addressNumber={ addressNumber }
             setAddressNumber={ setAddressNumber }
-            handleSubmitOrder={ handleSubmitOrder }
+            sendOrder={ sendOrder }
           />
         </div>
       </div>

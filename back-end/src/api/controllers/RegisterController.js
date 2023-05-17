@@ -1,11 +1,11 @@
-const UserService = require('../services/UserService');
+const RegisterService = require('../services/RegisterService');
 
-const UserController = {
+const RegisterController = {
   async register(req, res) {
     const { name, email, password } = req.body;
 
     try {
-      const newUser = await UserService.register(name, email, password);
+      const newUser = await RegisterService.register(name, email, password);
 
       if (!newUser) {
         return res.status(409).json({ error: 'Nome ou email já em uso' });
@@ -18,4 +18,4 @@ const UserController = {
   },
 };
 
-module.exports = UserController;
+module.exports = RegisterController;

@@ -8,15 +8,17 @@ module.exports = (sequelize, DataTypes) => {
   },
   {
     timestamps: false,
-    tableName: 'users',
     underscored: true,
   });
 
   // Associação: Um usuário possui muitas vendas (Sale)
   User.associate = (models) => {
     User.hasMany(models.Sale, {
-      foreignKey: 'id',
-      as: 'sales',
+      foreignKey: 'userId',
+    });
+
+    User.hasMany(models.Sale, {
+      foreignKey: 'sellerId',
     });
   };
 

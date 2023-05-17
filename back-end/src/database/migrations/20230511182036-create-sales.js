@@ -17,7 +17,7 @@ module.exports = {
       },
       seller_id: { 
         type: Sequelize.INTEGER, 
-        allowNull: false, 
+        allowNull: false,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         references: { 

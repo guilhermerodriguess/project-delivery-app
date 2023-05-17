@@ -34,7 +34,7 @@ function ProductCard({ product, handleAddToCart, handleRemoveFromCart }) {
     <div className="product-card">
       <img
         className="product-card-img"
-        src={ product.url_image }
+        src={ product.urlImage }
         alt={ product.name }
         data-testid={ `customer_products__img-card-bg-image-${product.id}` }
       />
@@ -89,7 +89,7 @@ ProductCard.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    url_image: PropTypes.string.isRequired,
+    urlImage: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
     quantity: PropTypes.number,
   }).isRequired,
