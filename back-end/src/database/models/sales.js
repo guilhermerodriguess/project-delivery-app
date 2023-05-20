@@ -21,10 +21,12 @@ module.exports = (sequelize, DataTypes) => {
   
     Sale.belongsTo(models.User, {
       foreignKey: 'sellerId',
+      as:'seller',
     });
   
     Sale.hasMany(models.SalesProduct, {
       foreignKey: 'saleId',
+      as: 'products',
     });
   };
 

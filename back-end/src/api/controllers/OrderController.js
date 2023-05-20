@@ -36,6 +36,17 @@ const OrderController = {
     }
   },
 
+  async getOrdersById(req, res) {
+    try {
+      const { id } = req.params;
+      const order = await OrderService.getOrdersById(id);
+      res.status(200).json({ order });
+    } catch (error) {
+      console.error('Error getting order by id:', error);
+      res.status(500).json({ error: 'Failed to get order by id' });
+    }
+  },
+
 };
 
 module.exports = OrderController;

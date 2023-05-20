@@ -1,36 +1,5 @@
-const { User, Sale, SalesProduct } = require('../../database/models');
-
-const createSale = async (order) => {
-  const { userId, sellerId, totalPrice, deliveryAddress, deliveryNumber } = order;
-  try {
-    const sale = await Sale.create({
-      userId,
-      sellerId,
-      totalPrice,
-      deliveryAddress,
-      deliveryNumber,
-      saleDate: new Date(),
-      status: 'Pendente',
-    });
-    return sale;
-  } catch (error) {
-    throw new Error('Failed to create sale');
-  }
-};
-
-const createSalesProducts = async (saleId, products) => {
-  try {
-    const salesProducts = products.map((product) => ({
-      saleId,
-      productId: product.productId,
-      quantity: product.quantity,
-    }));
-    await SalesProduct.bulkCreate(salesProducts);
-  } catch (error) {
-    console.error('Error creating sales products:', error);
-    throw new Error('Failed to create sales products');
-  }
-};
+const { User, Sale, SalesProduct, Product } = require('../../database/models');
+const { createSale, createSalesProducts } = require('./SalesService');
 
 const OrderService = {
   async createOrder(order) {
@@ -73,6 +42,27 @@ const OrderService = {
     } catch (error) {
       console.error('Error getting orders:', error);
       throw new Error('Failed to get orders');
+    }
+  },
+
+  async getOrdersById(id) {
+    try {
+      const order = await Sale.findAll({
+        where: { id },
+        include: [
+          { model: User, as: 'seller', attributes: ['id', 'name'] },
+          { model: SalesProduct, as: 'products', include: [{ model: Product, as: 'product' }] },
+        ],
+      });
+
+      if (!order) {
+        throw new Error('Order not found');
+      }
+  
+      return order;
+    } catch (error) {
+      console.error('Error getting order:', error);
+      throw new Error('Failed to get order');
     }
   },
 };

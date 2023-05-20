@@ -14,6 +14,21 @@ const SellerService = {
       throw new Error('Failed to get sellers');
     }
   },
+
+  async getSellerById(id) {
+    try {
+      const seller = await User.findOne({
+        where: {
+          id,
+          role: 'seller',
+        },
+        attributes: ['name'],
+      });
+      return seller;
+    } catch (error) {
+      throw new Error('Failed to get seller');
+    }
+  },
 };
 
 module.exports = SellerService;
