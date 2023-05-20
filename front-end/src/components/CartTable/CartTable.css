@@ -10,8 +10,6 @@ thead tr th {
 }
 
 tbody tr td {
-
-  /* border: 1px solid black; */
   color: var(--text-light);
   font-size: 36px;
   padding: 0 20px;
@@ -24,29 +22,29 @@ tbody tr td {
 }
 
 td:nth-child( 1 ) {
-  background-color: var(--secondary-color); /* Define a cor de fundo para a coluna "Item" */
-  border-bottom-left-radius: 5px; /* Adiciona borda inferior esquerda levemente arredondada */
-  border-top-left-radius: 5px; /* Adiciona borda superior esquerda levemente arredondada */
+  background-color: var(--secondary-color);
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
   color: var(--text-dark);
   padding: 0 20px;
 }
 
 td:nth-child( 2 ) {
-  background-color: #eaf1ef; /* Define a cor de fundo para a coluna "Item" */
+  background-color: #eaf1ef;
   color: var(--text-dark);
 }
 
 td:nth-child( 3 ) {
-  background-color: var(--primary-color); /* Define a cor de fundo para a coluna "Item" */
+  background-color: var(--primary-color);
   padding: 0 70px;
 }
 
 td:nth-child( 4 ) {
-  background-color: var(--tertiary-color); /* Define a cor de fundo para a coluna "Item" */
+  background-color: var(--tertiary-color);
 }
 
 td:nth-child( 5 ) {
-  background-color: var(--quaternary-color); /* Define a cor de fundo para a coluna "Item" */
+  background-color: var(--quaternary-color);
 }
 
 td:nth-child( 6 ) button {
@@ -59,6 +57,6 @@ td:nth-child( 6 ) button {
 
 td:nth-child( 6 ) {
   background-color: var(--secondary-color);
-  border-bottom-right-radius: 5px; /* Adiciona borda inferior esquerda levemente arredondada */
+  border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
 }
