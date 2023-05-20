@@ -22,6 +22,20 @@ const OrderController = {
       res.status(500).json({ error: 'Failed to get user id' });
     }
   },
+
+  async getOrders(req, res) {
+    try {
+      const { user } = req.body;
+      const { name, email } = user;
+      const userId = await OrderService.getUserId(name, email);
+      const orders = await OrderService.getOrders(userId);
+      res.status(200).json({ orders });
+    } catch (error) {
+      console.error('Error getting orders:', error);
+      res.status(500).json({ error: 'Failed to get orders' });
+    }
+  },
+
 };
 
 module.exports = OrderController;

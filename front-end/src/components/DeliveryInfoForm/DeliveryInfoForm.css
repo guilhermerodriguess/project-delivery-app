@@ -1,0 +1,38 @@
+.checkout-form-container {
+  font-size: 24px;
+}
+
+.form-button {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  color: var(--text-light);
+  font-size: 36px;
+  font-weight: 700;
+  margin-top: 20px;
+  width: 30%;
+}
+
+.form-button:disabled {
+  background-color: grey;
+  color: var(--text-dark);
+}
+
+
+.form-input-first, .form-input-second, .form-input-third {
+  font-size: 24px;
+  height: 40px;
+  margin-top: 20px;
+}
+
+.form-input-second {
+  width: 600px;
+}
+
+.form-input-third {
+  width: 100px;
+}
+
+.form-label {
+  padding: 10px;
+}

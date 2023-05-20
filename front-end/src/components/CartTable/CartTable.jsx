@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './CartTable.css';
 
 function CartTable({ cart, handleRemoveFromCart }) {
   return (
     <table>
       <thead>
         <tr>
-          <th>Número</th>
-          <th>Nome</th>
+          <th>Item</th>
+          <th>Descrição</th>
           <th>Quantidade</th>
-          <th>Preço Unitário</th>
-          <th>Subtotal</th>
-          <th>Remover</th>
+          <th>Valor Unitário</th>
+          <th>Sub-total</th>
+          <th>Remover Item</th>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +26,7 @@ function CartTable({ cart, handleRemoveFromCart }) {
               {index + 1}
             </td>
             <td
+              className="description-column"
               data-testid={ `customer_checkout__element-order-table-name-${index}` }
             >
               {item.name}

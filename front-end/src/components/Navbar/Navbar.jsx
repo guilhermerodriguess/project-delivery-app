@@ -28,7 +28,7 @@ function Navbar() {
           className={ `nav-item ${activeLink === 'products' ? 'active' : ''}` }
           onClick={ () => handleLinkClick('products') }
         >
-          Produtos
+          PRODUTOS
         </Link>
         <Link
           to="/customer/orders"
@@ -36,7 +36,7 @@ function Navbar() {
           className={ `nav-item ${activeLink === 'orders' ? 'active' : ''}` }
           onClick={ () => handleLinkClick('orders') }
         >
-          Meus Pedidos
+          MEUS PEDIDOS
         </Link>
       </div>
       <div className="navbar-right">

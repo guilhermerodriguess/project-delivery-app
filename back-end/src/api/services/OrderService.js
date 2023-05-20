@@ -61,6 +61,20 @@ const OrderService = {
       throw new Error('Failed to get user id');
     }
   },
+
+  async getOrders(id) {
+    try {
+      const orders = await Sale.findAll({
+        where: {
+          userId: id,
+        },
+      });
+      return orders;
+    } catch (error) {
+      console.error('Error getting orders:', error);
+      throw new Error('Failed to get orders');
+    }
+  },
 };
 
 module.exports = OrderService;

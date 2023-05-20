@@ -1,0 +1,64 @@
+table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  margin: 20px;
+}
+
+thead tr th {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+tbody tr td {
+
+  /* border: 1px solid black; */
+  color: var(--text-light);
+  font-size: 36px;
+  padding: 0 20px;
+}
+
+.description-column {
+  font-weight: 400;
+  padding-right: 200px;
+  text-align: left;
+}
+
+td:nth-child( 1 ) {
+  background-color: var(--secondary-color); /* Define a cor de fundo para a coluna "Item" */
+  border-bottom-left-radius: 5px; /* Adiciona borda inferior esquerda levemente arredondada */
+  border-top-left-radius: 5px; /* Adiciona borda superior esquerda levemente arredondada */
+  color: var(--text-dark);
+  padding: 0 20px;
+}
+
+td:nth-child( 2 ) {
+  background-color: #eaf1ef; /* Define a cor de fundo para a coluna "Item" */
+  color: var(--text-dark);
+}
+
+td:nth-child( 3 ) {
+  background-color: var(--primary-color); /* Define a cor de fundo para a coluna "Item" */
+  padding: 0 70px;
+}
+
+td:nth-child( 4 ) {
+  background-color: var(--tertiary-color); /* Define a cor de fundo para a coluna "Item" */
+}
+
+td:nth-child( 5 ) {
+  background-color: var(--quaternary-color); /* Define a cor de fundo para a coluna "Item" */
+}
+
+td:nth-child( 6 ) button {
+  background-color: var(--secondary-color);
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  font-size: 36px;
+}
+
+td:nth-child( 6 ) {
+  background-color: var(--secondary-color);
+  border-bottom-right-radius: 5px; /* Adiciona borda inferior esquerda levemente arredondada */
+  border-top-right-radius: 5px;
+}

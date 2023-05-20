@@ -4,6 +4,8 @@ import LoginPage from './pages/login/LoginPage';
 import RegisterPage from './pages/register/RegisterPage';
 import ProductsPage from './pages/products/ProductsPage';
 import CheckoutPage from './pages/checkout/CheckoutPage';
+import OrderPage from './pages/order/OrderPage';
+import OrdersPage from './pages/orders/OrdersPage';
 import './App.css';
 
 function App() {
@@ -14,6 +16,9 @@ function App() {
         <Route exact path="/login" component={ LoginPage } />
         <Route exact path="/customer/products" component={ ProductsPage } />
         <Route exact path="/customer/checkout" component={ CheckoutPage } />
+        <Route exact path="/customer/orders" component={ OrdersPage } />
+        <Route exact path="/customer/orders/:id" component={ OrderPage } />
+
         <Route exact path="/">
           <Redirect to="/login" />
         </Route>

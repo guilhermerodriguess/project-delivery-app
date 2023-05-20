@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import './LoginPage.css';
@@ -11,6 +11,13 @@ function LoginPage() {
 
   const MIN_PASS_LENGTH = 6;
   const HTTP_NOT_FOUND = 404;
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user && user.token) {
+      history.push('/customer/products');
+    }
+  }, [history]);
 
   const validateEmail = (email) => {
     // Validação de email incompleto e formato inválido
