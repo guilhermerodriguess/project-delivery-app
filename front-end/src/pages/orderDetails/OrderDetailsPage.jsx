@@ -32,7 +32,7 @@ function OrderDetailPage() {
     getOrder();
   }, [id]);
 
-  console.log(order);
+  const { id: oId } = order;
 
   return (
     <div>
@@ -57,7 +57,7 @@ function OrderDetailPage() {
           </h3>
           <h3
             data-testid={
-              `customer_order_details__element-order-details-label-delivery-status-${order.id}`
+              `customer_order_details__element-order-details-label-delivery-status-${oId}`
             }
           >
             {order.status}
