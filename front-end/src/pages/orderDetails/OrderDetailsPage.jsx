@@ -50,7 +50,7 @@ function OrderDetailPage() {
 
   const formattedDate = moment(order.saleDate).format('DD/MM/YYYY');
   const testIdName = 'customer_order_details__element-order-details-label-seller-name';
-  const testIdStatus = 'customer_order_details__element-order-details-label-delivery-status';
+  const testStatu = 'customer_order_details__element-order-details-label-delivery-status';
 
   if (!order || !totalPrice) {
     return (
@@ -81,7 +81,7 @@ function OrderDetailPage() {
               {formattedDate}
             </h3>
             <h3
-              data-testid={ testIdStatus }
+              data-testid={ testStatu }
             >
               {order.status}
             </h3>
