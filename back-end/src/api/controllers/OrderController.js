@@ -47,6 +47,18 @@ const OrderController = {
     }
   },
 
+  async updateOrderStatus(req, res) {
+    try {
+      const { id } = req.params;
+      const { status } = req.body;
+      await OrderService.updateOrderStatus(id, status);
+    
+      res.status(200).json({ id, status });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
+
 };
 
 module.exports = OrderController;

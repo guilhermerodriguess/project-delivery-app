@@ -65,6 +65,21 @@ const OrderService = {
       throw new Error('Failed to get order');
     }
   },
+
+  async updateOrderStatus(id, status) {
+    try {
+    const [rowsUpdated] = await Sale.update(
+      { status },
+      { where: { id } },
+    );
+    if (rowsUpdated === 0) {
+      throw new Error('Pedido não encontrado.');
+    }
+    return { id, status };
+  } catch (error) {
+    throw new Error('Ocorreu um erro ao atualizar o status do pedido.');
+  }
+  },
 };
 
 module.exports = OrderService;

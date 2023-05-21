@@ -8,6 +8,7 @@ customerRouter.put('/', OrderController.getUserId);
 customerRouter.get('/products', ProductController.getProducts);
 customerRouter.post('/orders', OrderController.createOrder);
 customerRouter.put('/orders', OrderController.getOrders);
+customerRouter.put('/orders/:id', OrderController.updateOrderStatus);
 customerRouter.get('/orders/:id', OrderController.getOrdersById);
 
 module.exports = customerRouter;

@@ -13,7 +13,6 @@ function OrdersPage() {
       const user = JSON.parse(localStorage.getItem('user'));
       try {
         const response = await axios.put('http://localhost:3001/customer/orders', { user });
-        console.log(response.data);
         setOrders(response.data.orders);
       } catch (error) {
         console.error('Error fetching orders:', error);
