@@ -19,7 +19,9 @@ const LoginController = {
         role: user.role,
       });
 
-      return res.status(200).json({ name: user.name, email: user.email, role: user.role, token });
+      return res.status(200).json({ 
+        id: user.id, name: user.name, email: user.email, role: user.role, token, 
+      });
     } catch (error) {
       return res.status(500).json({ message: 'Ocorreu um erro ao fazer login' });
     }

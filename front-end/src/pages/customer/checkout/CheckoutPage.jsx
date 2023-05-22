@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import DeliveryInfoForm from '../../components/DeliveryInfoForm/DeliveryInfoForm';
-import CartTable from '../../components/CartTable/CartTable';
-import Navbar from '../../components/Navbar/Navbar';
+import DeliveryInfoForm from '../../../components/DeliveryInfoForm/DeliveryInfoForm';
+import CartTable from '../../../components/CartTable/CartTable';
+import Navbar from '../../../components/Navbar/Navbar';
 import './CheckoutPage.css';
 
 function CheckoutPage() {

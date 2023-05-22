@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Navbar from '../../components/Navbar/Navbar';
-import OrderCard from '../../components/OrderCard/OrderCard';
+import Navbar from '../../../components/Navbar/Navbar';
+import OrderCard from '../../../components/OrderCard/OrderCard';
 import './OrdersPage.css';
 
 function OrdersPage() {

@@ -13,10 +13,7 @@ function LoginPage() {
   const HTTP_NOT_FOUND = 404;
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user && user.token) {
-      history.push('/customer/products');
-    }
+
   }, [history]);
 
   const validateEmail = (email) => {
@@ -71,15 +68,20 @@ function LoginPage() {
         return;
       }
       // Login bem-sucedido
-      const { name, email, role, token } = response.data;
+      const { id, name, email, role, token } = response.data;
 
       // Armazenar os dados da pessoa usuária no localStorage
       const userData = { name, email, role, token };
       localStorage.setItem('user', JSON.stringify(userData));
+      localStorage.setItem('userId', JSON.stringify(id));
 
       axios.defaults.headers.common.Authorization = token; // Define o token no cabeçalho das requisições
 
-      history.push('/customer/products');
+      if (role === 'seller') {
+        history.push('/seller/orders');
+      } else {
+        history.push('/customer/products');
+      }
     } catch {
       setError('Ocorreu um erro ao fazer login');
     }

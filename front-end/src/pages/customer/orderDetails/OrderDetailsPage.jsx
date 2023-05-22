@@ -2,8 +2,8 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
-import CartTable from '../../components/CartTable/CartTable';
-import Navbar from '../../components/Navbar/Navbar';
+import CartTable from '../../../components/CartTable/CartTable';
+import Navbar from '../../../components/Navbar/Navbar';
 
 function OrderDetailPage() {
   const { id } = useParams();

@@ -1,4 +1,4 @@
-const { User } = require('../../database/models');
+const { User, Sale } = require('../../database/models');
 
 const SellerService = {
   async getAllSellers() {
@@ -27,6 +27,20 @@ const SellerService = {
       return seller;
     } catch (error) {
       throw new Error('Failed to get seller');
+    }
+  },
+
+  async getAllOrders(userId) {
+    try {
+      const orders = await Sale.findAll({
+        where: {
+          sellerId: userId,
+        },
+        attributes: ['id', 'status', 'saleDate', 'totalPrice', 'deliveryAddress'],
+      });
+      return orders;
+    } catch (error) {
+      throw new Error('Failed to get orders');
     }
   },
 };
