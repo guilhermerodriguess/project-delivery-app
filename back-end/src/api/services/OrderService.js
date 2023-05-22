@@ -13,24 +13,6 @@ const OrderService = {
     }
   },
 
-  async getUserId(name, email) {
-    try {
-      const user = await User.findOne({
-        where: {
-          name,
-          email,
-        },
-      });
-      if (!user) {
-        throw new Error('User not found');
-      }
-      return user.id;
-    } catch (error) {
-      console.error('Error getting user id:', error);
-      throw new Error('Failed to get user id');
-    }
-  },
-
   async getOrders(id) {
     try {
       const orders = await Sale.findAll({
@@ -45,9 +27,9 @@ const OrderService = {
     }
   },
 
-  async getOrdersById(id) {
+  async getOrderById(id) {
     try {
-      const order = await Sale.findAll({
+      const order = await Sale.findOne({
         where: { id },
         include: [
           { model: User, as: 'seller', attributes: ['id', 'name'] },
@@ -58,7 +40,6 @@ const OrderService = {
       if (!order) {
         throw new Error('Order not found');
       }
-  
       return order;
     } catch (error) {
       console.error('Error getting order:', error);

@@ -12,22 +12,9 @@ const OrderController = {
     }
   },
 
-  async getUserId(req, res) {
-    try {
-      const { name, email } = req.body; 
-      const userId = await OrderService.getUserId(name, email);
-      res.status(200).json({ userId }); 
-    } catch (error) {
-      console.error('Error getting user id:', error);
-      res.status(500).json({ error: 'Failed to get user id' });
-    }
-  },
-
   async getOrders(req, res) {
     try {
-      const { user } = req.body;
-      const { name, email } = user;
-      const userId = await OrderService.getUserId(name, email);
+      const { userId } = req.params;
       const orders = await OrderService.getOrders(userId);
       res.status(200).json({ orders });
     } catch (error) {
@@ -36,10 +23,10 @@ const OrderController = {
     }
   },
 
-  async getOrdersById(req, res) {
+  async getOrderById(req, res) {
     try {
       const { id } = req.params;
-      const order = await OrderService.getOrdersById(id);
+      const order = await OrderService.getOrderById(id);
       res.status(200).json({ order });
     } catch (error) {
       console.error('Error getting order by id:', error);

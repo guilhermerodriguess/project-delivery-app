@@ -14,11 +14,10 @@ function OrderDetailPage() {
 
   useEffect(() => {
     const getOrder = async () => {
-      const response = await axios.get(`http://localhost:3001/customer/orders/${id}`);
-      setOrder(response.data.order[0]);
-      console.log(response.data.order[0]);
+      const response = await axios.get(`http://localhost:3001/customer/order/${id}`);
+      setOrder(response.data.order);
 
-      const orderProducts = response.data.order[0].products;
+      const orderProducts = response.data.order.products;
 
       const transformedProducts = orderProducts.map((item) => ({
         name: item.product.name,
@@ -28,8 +27,8 @@ function OrderDetailPage() {
       }));
 
       setProducts(transformedProducts);
-      setTotalPrice(response.data.order[0].totalPrice);
-      setSellerId(response.data.order[0].seller);
+      setTotalPrice(response.data.order.totalPrice);
+      setSellerId(response.data.order.seller);
     };
     getOrder();
   }, [id]);

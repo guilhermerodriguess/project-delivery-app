@@ -13,7 +13,15 @@ function LoginPage() {
   const HTTP_NOT_FOUND = 404;
 
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
 
+    if (user && user.token) {
+      if (user.role === 'seller') {
+        history.push('/seller/orders');
+      } else {
+        history.push('/customer/products');
+      }
+    }
   }, [history]);
 
   const validateEmail = (email) => {

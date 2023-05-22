@@ -10,9 +10,9 @@ function OrdersPage() {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const user = JSON.parse(localStorage.getItem('user'));
+      const userId = JSON.parse(localStorage.getItem('userId'));
       try {
-        const response = await axios.put('http://localhost:3001/customer/orders', { user });
+        const response = await axios.get(`http://localhost:3001/customer/orders/${userId}`);
         setOrders(response.data.orders);
       } catch (error) {
         console.error('Error fetching orders:', error);

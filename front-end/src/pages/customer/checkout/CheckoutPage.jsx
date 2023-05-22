@@ -45,24 +45,9 @@ function CheckoutPage() {
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
-  const fetchUserId = async (name, email) => {
-    try {
-      const response = await axios.put('http://localhost:3001/customer', {
-        name,
-        email,
-      });
-
-      return response.data.userId;
-    } catch (error) {
-      console.error('Erro ao buscar o ID do usuário:', error);
-      throw new Error('Failed to fetch user ID');
-    }
-  };
-
   const sendOrder = async () => {
     try {
-      const user = JSON.parse(localStorage.getItem('user'));
-      const userId = await fetchUserId(user.name, user.email);
+      const userId = localStorage.getItem('userId');
 
       const order = {
         userId,

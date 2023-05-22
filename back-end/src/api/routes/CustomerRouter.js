@@ -4,11 +4,10 @@ const OrderController = require('../controllers/OrderController');
 
 const customerRouter = express.Router();
 
-customerRouter.put('/', OrderController.getUserId);
 customerRouter.get('/products', ProductController.getProducts);
 customerRouter.post('/orders', OrderController.createOrder);
-customerRouter.put('/orders', OrderController.getOrders);
+customerRouter.get('/orders/:userId', OrderController.getOrders);
 customerRouter.put('/orders/:id', OrderController.updateOrderStatus);
-customerRouter.get('/orders/:id', OrderController.getOrdersById);
+customerRouter.get('/order/:id', OrderController.getOrderById);
 
 module.exports = customerRouter;
