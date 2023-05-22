@@ -10,6 +10,7 @@ function ProductTable({ cart, handleRemoveFromCart }) {
 
   const location = useLocation();
   const isOrderDetailCustomer = location.pathname.includes('/customer/orders/');
+  const isCheckoutCustomer = location.pathname.includes('/customer/checkout');
   const isOrderDetailSeller = location.pathname.includes('/seller/orders/');
 
   const getTestId = (baseTestId, index) => {
@@ -31,7 +32,7 @@ function ProductTable({ cart, handleRemoveFromCart }) {
           <th>Quantidade</th>
           <th>Valor Unitário</th>
           <th>Sub-total</th>
-          {isOrderDetailCustomer && <th>Remover Item</th>}
+          {isCheckoutCustomer && <th>Remover Item</th>}
         </tr>
       </thead>
       <tbody>
@@ -67,7 +68,7 @@ function ProductTable({ cart, handleRemoveFromCart }) {
                 ).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
               </span>
             </td>
-            {isOrderDetailCustomer && (
+            {isCheckoutCustomer && (
               <td>
                 <button
                   type="button"

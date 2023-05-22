@@ -27,7 +27,7 @@ function Navbar() {
         {isSeller ? (
           <Link
             to="/seller/orders"
-            data-testid="customer_products__element-navbar-link-products"
+            data-testid="customer_products__element-navbar-link-orders"
             className={ `nav-item ${activeLink === 'orders' ? 'active' : ''}` }
             onClick={ () => handleLinkClick('orders') }
           >
