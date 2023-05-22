@@ -1,4 +1,4 @@
-const { User, Sale } = require('../../database/models');
+const { User, Sale, SalesProduct, Product } = require('../../database/models');
 
 const SellerService = {
   async getAllSellers() {
@@ -15,21 +15,6 @@ const SellerService = {
     }
   },
 
-  async getSellerById(id) {
-    try {
-      const seller = await User.findOne({
-        where: {
-          id,
-          role: 'seller',
-        },
-        attributes: ['name'],
-      });
-      return seller;
-    } catch (error) {
-      throw new Error('Failed to get seller');
-    }
-  },
-
   async getAllOrders(userId) {
     try {
       const orders = await Sale.findAll({
@@ -41,6 +26,26 @@ const SellerService = {
       return orders;
     } catch (error) {
       throw new Error('Failed to get orders');
+    }
+  },
+
+  async getOrderById(id) {
+    try {
+      const order = await Sale.findOne({
+        where: { id },
+        include: [
+          { model: User, as: 'seller', attributes: ['id', 'name'] },
+          { model: SalesProduct, as: 'products', include: [{ model: Product, as: 'product' }] },
+        ],
+      });
+
+      if (!order) {
+        throw new Error('Order not found');
+      }
+      return order;
+    } catch (error) {
+      console.error('Error getting order:', error);
+      throw new Error('Failed to get order');
     }
   },
 };

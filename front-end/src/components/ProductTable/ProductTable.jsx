@@ -1,19 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import './CartTable.css';
+import './ProductTable.css';
 
-function CartTable({ cart, handleRemoveFromCart }) {
-  CartTable.defaultProps = {
+function ProductTable({ cart, handleRemoveFromCart }) {
+  ProductTable.defaultProps = {
     handleRemoveFromCart: () => {},
   };
 
   const location = useLocation();
-  const isOrderDetailsPage = location.pathname.includes('/customer/orders/');
+  const isOrderDetailCustomer = location.pathname.includes('/customer/orders/');
+  const isOrderDetailSeller = location.pathname.includes('/seller/orders/');
 
   const getTestId = (baseTestId, index) => {
-    if (isOrderDetailsPage) {
+    if (isOrderDetailCustomer) {
       return `customer_order_details__${baseTestId}-${index}`;
+    }
+    if (isOrderDetailSeller) {
+      return `seller_order_details__${baseTestId}-${index}`;
     }
     return `customer_checkout__${baseTestId}-${index}`;
   };
@@ -27,7 +31,7 @@ function CartTable({ cart, handleRemoveFromCart }) {
           <th>Quantidade</th>
           <th>Valor Unitário</th>
           <th>Sub-total</th>
-          {!isOrderDetailsPage && <th>Remover Item</th>}
+          {isOrderDetailCustomer && <th>Remover Item</th>}
         </tr>
       </thead>
       <tbody>
@@ -63,7 +67,7 @@ function CartTable({ cart, handleRemoveFromCart }) {
                 ).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
               </span>
             </td>
-            {!isOrderDetailsPage && (
+            {isOrderDetailCustomer && (
               <td>
                 <button
                   type="button"
@@ -81,7 +85,7 @@ function CartTable({ cart, handleRemoveFromCart }) {
   );
 }
 
-CartTable.propTypes = {
+ProductTable.propTypes = {
   cart: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -96,4 +100,4 @@ CartTable.propTypes = {
   handleRemoveFromCart: PropTypes.func,
 };
 
-export default CartTable;
+export default ProductTable;

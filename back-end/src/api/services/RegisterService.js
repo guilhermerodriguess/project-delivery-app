@@ -23,7 +23,6 @@ const Register = {
 
       return newUser;
     } catch (error) {
-      console.log(error);
       throw new Error('Ocorreu um erro ao registrar o usuário');
     }
   },

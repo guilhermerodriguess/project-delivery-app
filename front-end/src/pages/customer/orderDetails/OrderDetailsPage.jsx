@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
-import CartTable from '../../../components/CartTable/CartTable';
+import ProductTable from '../../../components/ProductTable/ProductTable';
 import Navbar from '../../../components/Navbar/Navbar';
 
 function OrderDetailPage() {
@@ -94,7 +94,7 @@ function OrderDetailPage() {
             </button>
           </div>
           <div>
-            <CartTable cart={ products } />
+            <ProductTable cart={ products } />
             <h3 data-testid="customer_order_details__element-order-total-price">
               {totalPrice.replace(/\./, ',')}
             </h3>

@@ -1,10 +1,10 @@
-const OrderService = require('../services/OrderService');
+const CustomerService = require('../services/CustomerService');
 
-const OrderController = {
+const CustomerController = {
   async createOrder(req, res) {
     try {
       const { order } = req.body;
-      const orderId = await OrderService.createOrder(order);
+      const orderId = await CustomerService.createOrder(order);
       res.status(201).json({ orderId });
     } catch (error) {
       console.error('Error creating order:', error);
@@ -15,7 +15,7 @@ const OrderController = {
   async getOrders(req, res) {
     try {
       const { userId } = req.params;
-      const orders = await OrderService.getOrders(userId);
+      const orders = await CustomerService.getOrders(userId);
       res.status(200).json({ orders });
     } catch (error) {
       console.error('Error getting orders:', error);
@@ -26,7 +26,7 @@ const OrderController = {
   async getOrderById(req, res) {
     try {
       const { id } = req.params;
-      const order = await OrderService.getOrderById(id);
+      const order = await CustomerService.getOrderById(id);
       res.status(200).json({ order });
     } catch (error) {
       console.error('Error getting order by id:', error);
@@ -38,7 +38,7 @@ const OrderController = {
     try {
       const { id } = req.params;
       const { status } = req.body;
-      await OrderService.updateOrderStatus(id, status);
+      await CustomerService.updateOrderStatus(id, status);
     
       res.status(200).json({ id, status });
     } catch (error) {
@@ -48,4 +48,4 @@ const OrderController = {
 
 };
 
-module.exports = OrderController;
+module.exports = CustomerController;

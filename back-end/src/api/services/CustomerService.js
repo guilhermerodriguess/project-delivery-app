@@ -1,7 +1,7 @@
 const { User, Sale, SalesProduct, Product } = require('../../database/models');
 const { createSale, createSalesProducts } = require('./SalesService');
 
-const OrderService = {
+const CustomerService = {
   async createOrder(order) {
     try {
       const sale = await createSale(order);
@@ -63,4 +63,4 @@ const OrderService = {
   },
 };
 
-module.exports = OrderService;
+module.exports = CustomerService;

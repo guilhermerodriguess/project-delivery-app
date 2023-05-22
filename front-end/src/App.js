@@ -4,9 +4,9 @@ import LoginPage from './pages/comum/login/LoginPage';
 import RegisterPage from './pages/comum/register/RegisterPage';
 import ProductsPage from './pages/customer/products/ProductsPage';
 import CheckoutPage from './pages/customer/checkout/CheckoutPage';
-import OrderDetailPage from './pages/customer/orderDetails/OrderDetailsPage';
 import OrdersPage from './pages/customer/orders/OrdersPage';
 import SellerOrdersPage from './pages/seller/orders/SellerOrdersPage';
+import OrderDetail from './components/OrderDetail/OrderDetail';
 import './App.css';
 
 function App() {
@@ -18,8 +18,9 @@ function App() {
         <Route exact path="/customer/products" component={ ProductsPage } />
         <Route exact path="/customer/checkout" component={ CheckoutPage } />
         <Route exact path="/customer/orders" component={ OrdersPage } />
-        <Route exact path="/customer/orders/:id" component={ OrderDetailPage } />
+        <Route exact path="/customer/orders/:id" component={ OrderDetail } />
         <Route exact path="/seller/orders" component={ SellerOrdersPage } />
+        <Route exact path="/seller/orders/:id" component={ OrderDetail } />
         <Route exact path="/">
           <Redirect to="/login" />
         </Route>

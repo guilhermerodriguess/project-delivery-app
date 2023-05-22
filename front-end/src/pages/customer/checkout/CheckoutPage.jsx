@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import DeliveryInfoForm from '../../../components/DeliveryInfoForm/DeliveryInfoForm';
-import CartTable from '../../../components/CartTable/CartTable';
+import ProductTable from '../../../components/ProductTable/ProductTable';
 import Navbar from '../../../components/Navbar/Navbar';
 import './CheckoutPage.css';
 
@@ -78,7 +78,7 @@ function CheckoutPage() {
         <div className="cart-container">
           <h2 className="checkout-heading">Finalizar Pedido</h2>
           <div className="checkout-info">
-            <CartTable cart={ cart } handleRemoveFromCart={ handleRemoveFromCart } />
+            <ProductTable cart={ cart } handleRemoveFromCart={ handleRemoveFromCart } />
             <span className="total-price first">
               Total: R$
               {' '}

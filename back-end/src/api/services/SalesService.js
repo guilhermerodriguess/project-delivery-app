@@ -39,7 +39,6 @@ const SalesService = {
          where: { id }, 
          include: [{ model: SalesProduct }],
         });
-      console.log(salesProducts);
       return salesProducts;
     } catch (error) {
       console.error('Error getting sales products:', error);
