@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './ProductCard.css';
 
 function ProductCard({ product, handleAddToCart, handleRemoveFromCart }) {
-  const [quantity, setQuantity] = useState(product.quantity || 0);
+  const [quantity, setQuantity] = useState(0);
 
   const handleAddQuantity = () => {
     const newQuantity = quantity + 1;
@@ -68,7 +68,6 @@ function ProductCard({ product, handleAddToCart, handleRemoveFromCart }) {
             value={ quantity }
             onChange={ handleQuantityChange }
             data-testid={ `customer_products__input-card-quantity-${product.id}` }
-            min={ 0 }
           />
           <button
             className="button-rm"
