@@ -19,15 +19,9 @@ function ProductCard({ product, handleAddToCart, handleRemoveFromCart }) {
     }
   };
 
-  const handleQuantityChange = (event) => {
-    const newQuantity = parseInt(event.target.value, 10);
-    if (!Number.isNaN(newQuantity)) {
-      setQuantity(newQuantity);
-      handleAddToCart(product.id, newQuantity);
-    } else {
-      setQuantity(0);
-      handleAddToCart(product.id, 0);
-    }
+  const handleQuantityChange = ({ target }) => {
+    setQuantity(target.value);
+    handleAddToCart(product.id, target.value);
   };
 
   return (
