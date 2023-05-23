@@ -59,7 +59,7 @@ function ProductCard({ product, handleAddToCart, handleRemoveFromCart }) {
           </button>
           <input
             type="text"
-            value={ quantity }
+            value={ (quantity).toString() }
             onChange={ handleQuantityChange }
             data-testid={ `customer_products__input-card-quantity-${product.id}` }
           />
