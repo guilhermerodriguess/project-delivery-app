@@ -19,9 +19,15 @@ function ProductCard({ product, handleAddToCart, handleRemoveFromCart }) {
     }
   };
 
-  const handleQuantityChange = ({ target }) => {
-    setQuantity(target.value);
-    handleAddToCart(product.id, target.value);
+  const handleQuantityChange = (event) => {
+    const newQuantity = parseInt(event.target.value, 10);
+    if (!Number.isNaN(newQuantity)) {
+      setQuantity(newQuantity);
+      handleAddToCart(product.id, newQuantity);
+    } else {
+      setQuantity(0);
+      handleAddToCart(product.id, 0);
+    }
   };
 
   return (
@@ -59,7 +65,7 @@ function ProductCard({ product, handleAddToCart, handleRemoveFromCart }) {
           </button>
           <input
             type="text"
-            value={ (quantity).toString() }
+            value={ quantity }
             onChange={ handleQuantityChange }
             data-testid={ `customer_products__input-card-quantity-${product.id}` }
           />
