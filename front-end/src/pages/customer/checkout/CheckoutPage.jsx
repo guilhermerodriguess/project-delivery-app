@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import DeliveryInfoForm from '../../../components/DeliveryInfoForm/DeliveryInfoForm';
 import ProductTable from '../../../components/ProductTable/ProductTable';
-import Navbar from '../../../components/Navbar/Navbar';
 import './CheckoutPage.css';
 
 function CheckoutPage() {

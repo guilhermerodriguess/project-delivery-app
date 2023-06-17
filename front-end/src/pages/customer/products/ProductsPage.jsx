@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Navbar from '../../../components/Navbar/Navbar';
 import ProductCard from '../../../components/ProductCard/ProductCard';
 import CartFloatingButton from
   '../../../components/CartFloatingButton/CartFloatingButton';
