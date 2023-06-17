@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import ProductTable from '../../../components/ProductTable/ProductTable';
-import Navbar from '../../../components/Navbar/Navbar';
+import './OrderDetailsPage.css';
 
 function OrderDetailPage() {
   const { id } = useParams();
@@ -58,50 +58,50 @@ function OrderDetailPage() {
   }
 
   return (
-    <>
-      <Navbar />
-      <div>
-        <h3>Detalhes do pedido</h3>
-        <div>
-          <div>
-            <h3
-              data-testid="customer_order_details__element-order-details-label-order-id"
-            >
-              {order && order.id}
-            </h3>
-            <h3
-              data-testid={ testIdName }
-            >
-              {seller.name}
-            </h3>
-            <h3
-              data-testid="customer_order_details__element-order-details-label-order-date"
-            >
-              {formattedDate}
-            </h3>
-            <h3
-              data-testid={ testStatu }
-            >
-              {order.status}
-            </h3>
-            <button
-              data-testid="customer_order_details__button-delivery-check"
-              type="button"
-              onClick={ handleDeliveryCheck }
-              disabled={ isDelivered }
-            >
-              MARCAR COMO ENTREGUE
-            </button>
-          </div>
-          <div>
-            <ProductTable cart={ products } />
-            <h3 data-testid="customer_order_details__element-order-total-price">
-              {totalPrice.replace(/\./, ',')}
-            </h3>
-          </div>
+    <div className="order-details-container">
+      <h3 className="order-details-title">Detalhes do pedido</h3>
+      <div className="order-details-content">
+        <div className="order-details-info">
+          <h3
+            className="order-id"
+            data-testid="customer_order_details__element-order-details-label-order-id"
+          >
+            {order && order.id}
+          </h3>
+          <h3 className="seller-name" data-testid={ testIdName }>
+            {seller.name}
+          </h3>
+          <h3
+            className="order-date"
+            data-testid="customer_order_details__element-order-details-label-order-date"
+          >
+            {formattedDate}
+          </h3>
+          <h3 className="order-status" data-testid={ testStatu }>
+            {order.status}
+          </h3>
+          <button
+            className="delivery-check-button"
+            data-testid="customer_order_details__button-delivery-check"
+            type="button"
+            onClick={ handleDeliveryCheck }
+            disabled={ isDelivered }
+          >
+            MARCAR COMO ENTREGUE
+          </button>
+        </div>
+        <div className="order-details-products">
+          <ProductTable className="product-table" cart={ products } />
+          <h3
+            className="order-total-price"
+            data-testid="customer_order_details__element-order-total-price"
+          >
+            {totalPrice.replace(/\./, ',')}
+          </h3>
         </div>
       </div>
-    </>
+    </div>
+
   );
 }
 

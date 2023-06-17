@@ -101,7 +101,6 @@ function LoginPage() {
       <form className="form-container" onSubmit={ handleLogin }>
         <div className="input-wrapper">
           <label htmlFor="email">
-            Email
             <input
               type="email"
               id="email"
@@ -113,7 +112,6 @@ function LoginPage() {
         </div>
         <div className="input-wrapper">
           <label htmlFor="password">
-            Senha
             <input
               type="password"
               id="password"

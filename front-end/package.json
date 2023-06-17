@@ -1,6 +1,7 @@
 {
   "name": "delivery-app-back-end",
   "version": "0.1.0",
+  "homepage": "https://guilhermerodriguess.github.io/project-delivery-app",
   "description": "Front-end do projeto App de Delivery",
   "engines": {
     "node": ">=16.0.0"
@@ -8,6 +9,8 @@
   "engineStrict": true,
   "private": true,
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "start:build": "PORT=3000 ./node_modules/.bin/serve -s build",
     "build": "react-scripts build",
@@ -22,6 +25,7 @@
     "@testing-library/jest-dom": "5.16.2",
     "@testing-library/react": "12.1.4",
     "@testing-library/user-event": "13.5.0",
+    "axios": "^1.4.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-router-dom": "5.3.4",
@@ -67,5 +71,5 @@
     "moduleNameMapper": {
       "^axios$": "axios/dist/axios.js"
     }
-  }  
+  }
 }

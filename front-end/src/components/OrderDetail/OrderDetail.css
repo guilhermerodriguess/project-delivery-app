@@ -1,0 +1,124 @@
+.order-details-container {
+  font-size: 22px;
+  padding: 2% 10%;
+}
+
+.order-details-content {
+  background: white;
+  border: 1px solid #b1c2be;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  height: 80%;
+}
+
+.order-details-info {
+  align-items: center;
+  background-color: #eaf1ef;
+  display: flex;
+  justify-content: space-between;
+  padding: 1%;
+}
+
+.order-details-info h3 {
+  margin: 0;
+}
+
+.seller-name {
+  font-weight: 400;
+}
+
+.order-date {
+  background-color: #f2fffc;
+  border-radius: 10px;
+  padding: 4px 30px;
+}
+
+.delivery-check-button {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 10px;
+  color: var(--text-light);
+  cursor: pointer;
+  font-size: 25.74px;
+  font-weight: 600;
+  margin: 0;
+  width: 380px;
+}
+
+.delivery-status {
+  background-color: #00cc9b;
+  border-radius: 10px;
+  padding: 10px 30px;
+  text-transform: uppercase;
+}
+
+.product-table {
+  width: 100%;
+}
+
+table {
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.order-details-products {
+  align-items: end;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-total-price {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  color: var(--text-light);
+  margin-right: 20px;
+  padding: 4px 30px;
+  width: fit-content;
+}
+
+.order-details-title {
+  font-weight: 400;
+}
+
+.order-card-status-pending {
+  background-color: #ccb800;
+}
+
+.order-card-status-preparing {
+  background-color: #6c0;
+}
+
+.order-card-status-delivered {
+  background-color: #00cc9b;
+}
+
+
+.preparing-check-button {
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 10px;
+  color: var(--text-light);
+  cursor: pointer;
+  font-size: 25.74px;
+  font-weight: 600;
+  margin: 0;
+  width: 380px;
+}
+
+.dispatch-check-button {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 10px;
+  color: var(--text-light);
+  cursor: pointer;
+  font-size: 25.74px;
+  font-weight: 600;
+  margin: 0;
+  width: 380px;
+}
+
+.preparing-check-button:disabled, .dispatch-check-button:disabled, .delivery-check-button:disabled {
+  background-color: #b1c2be;
+  cursor: not-allowed;
+}

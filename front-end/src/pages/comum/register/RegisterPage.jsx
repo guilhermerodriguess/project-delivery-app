@@ -147,7 +147,7 @@ function RegisterPage() {
       >
         { error }
       </div>
-      <div>
+      <div className="login-link">
         Já possui uma conta?
         {' '}
         <Link to="/">Faça login</Link>

@@ -1,0 +1,87 @@
+.order-card {
+  align-items: center;
+  background-color: #eaf1ef;
+  border: 1px #b1c2be solid;
+  box-shadow: 2px 8px 10px 1px rgba(0, 0, 0, 0.192);
+  color: var(--text-dark);
+  display: flex;
+  height: 100%;
+  text-align: center;
+  width: 670px;
+}
+
+.order-card-id {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  height: 100%;
+  width: 130px;
+}
+
+.order-card-status-details {
+  align-items: center;
+  display: flex;
+  height: 130px;
+}
+
+.order-card-date, .order-card-price {
+  background-color: #f2fffc;
+  border-radius: 8px;
+  margin: 0;
+}
+
+.order-card-date-text, .order-card-price-text {
+  margin: 0;
+  padding: 2px 20px;
+}
+
+.order-card-status {
+  align-items: center;
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  display: flex;
+  height: 80%;
+  justify-content: center;
+  margin: 0 8px;
+  width: 300px;
+}
+
+.order-card-status-text {
+  text-transform: uppercase;
+}
+
+
+.order-card-id-text {
+  font-weight: 400;
+}
+
+.order-card-id-text span {
+  font-size: 20px;
+}
+
+.order-card-details {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+}
+
+.order-card-status-pending {
+  background-color: #ccb800;
+}
+
+.order-card-status-preparing {
+  background-color: #6c0;
+}
+
+.order-card-status-delivered {
+  background-color: #00cc9b;
+}
+
+.order-card-address-text {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding-bottom: 1%;
+}

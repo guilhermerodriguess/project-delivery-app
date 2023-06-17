@@ -3,7 +3,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
 import ProductTable from '../ProductTable/ProductTable';
-import Navbar from '../Navbar/Navbar';
+import './OrderDetail.css';
 
 function OrderDetailPage() {
   const { id } = useParams();
@@ -18,6 +18,8 @@ function OrderDetailPage() {
   const isPreparing = order.status === 'Preparando';
   const isDelivery = order.status === 'Em Trânsito';
   const isPending = order.status === 'Pendente';
+
+  const ORDER_ID_LENGTH = 4;
 
   const getTestId = (baseTestId) => {
     if (isSeller) {
@@ -71,67 +73,110 @@ function OrderDetailPage() {
     );
   }
 
+  function formatOrderId(idOrder) {
+    return idOrder.toString().padStart(ORDER_ID_LENGTH, '0');
+  }
+
+  let statusClass = '';
+
+  switch (order.status) {
+  case 'Pendente':
+    statusClass = 'order-card-status-pending';
+    break;
+  case 'Preparando':
+    statusClass = 'order-card-status-preparing';
+    break;
+  case 'Entregue':
+    statusClass = 'order-card-status-delivered';
+    break;
+  default:
+    break;
+  }
+
   return (
-    <>
-      <Navbar />
-      <div>
-        <h3>Detalhes do pedido</h3>
-        <div>
-          <div>
-            <h3 data-testid={ getTestId('element-order-details-label-order-id') }>
-              {order.id}
+    <div className="order-details-container">
+      <h3 className="order-details-title">Detalhes do pedido</h3>
+      <div className="order-details-content">
+        <div className="order-details-info">
+          <h3
+            className="order-id"
+            data-testid={ getTestId('element-order-details-label-order-id') }
+          >
+            Pedido
+            {' '}
+            {formatOrderId(id)}
+            ;
+          </h3>
+          {!isSeller && (
+            <h3
+              className="seller-name"
+              data-testid={ getTestId('element-order-details-label-seller-name') }
+            >
+              P.Vendedora:
+              {' '}
+              {seller.name}
             </h3>
-            {!isSeller && (
-              <h3 data-testid={ getTestId('element-order-details-label-seller-name') }>
-                {seller.name}
-              </h3>
-            )}
-            <h3 data-testid={ getTestId('element-order-details-label-order-date') }>
-              {moment(order.saleDate).format('DD/MM/YYYY')}
-            </h3>
-            <h3 data-testid={ getTestId('element-order-details-label-delivery-status') }>
-              {order.status}
-            </h3>
-            {!isSeller && (
+          )}
+          <h3
+            className="order-date"
+            data-testid={ getTestId('element-order-details-label-order-date') }
+          >
+            {moment(order.saleDate).format('DD/MM/YYYY')}
+          </h3>
+          <h3
+            className={ `delivery-status ${statusClass}` }
+            data-testid={ getTestId('element-order-details-label-delivery-status') }
+          >
+            {order.status}
+          </h3>
+          {!isSeller && (
+            <button
+              className="delivery-check-button"
+              data-testid="customer_order_details__button-delivery-check"
+              type="button"
+              onClick={ () => handleDeliveryStatus('Entregue') }
+              disabled={ !isDelivery }
+            >
+              MARCAR COMO ENTREGUE
+            </button>
+          )}
+          {isSeller && (
+            <>
               <button
-                data-testid="customer_order_details__button-delivery-check"
+                className="preparing-check-button"
+                data-testid="seller_order_details__button-preparing-check"
                 type="button"
-                onClick={ () => handleDeliveryStatus('Entregue') }
-                disabled={ !isDelivery }
+                onClick={ () => handleDeliveryStatus('Preparando') }
+                disabled={ isPreparing || isDelivered || isDelivery }
               >
-                MARCAR COMO ENTREGUE
+                PREPARAR PEDIDO
               </button>
-            )}
-            {isSeller && (
-              <>
-                <button
-                  data-testid="seller_order_details__button-preparing-check"
-                  type="button"
-                  onClick={ () => handleDeliveryStatus('Preparando') }
-                  disabled={ isPreparing || isDelivered || isDelivery }
-                >
-                  PREPARAR PEDIDO
-                </button>
-                <button
-                  data-testid="seller_order_details__button-dispatch-check"
-                  type="button"
-                  onClick={ () => handleDeliveryStatus('Em Trânsito') }
-                  disabled={ isPending || isDelivery || isDelivered }
-                >
-                  SAIU PARA ENTREGA
-                </button>
-              </>
-            )}
-          </div>
-          <div>
-            <ProductTable cart={ products } />
-            <h3 data-testid={ getTestId('element-order-total-price') }>
-              {totalPrice.replace(/\./, ',')}
-            </h3>
-          </div>
+              <button
+                className="dispatch-check-button"
+                data-testid="seller_order_details__button-dispatch-check"
+                type="button"
+                onClick={ () => handleDeliveryStatus('Em Trânsito') }
+                disabled={ isPending || isDelivery || isDelivered }
+              >
+                SAIU PARA ENTREGA
+              </button>
+            </>
+          )}
+        </div>
+        <div className="order-details-products">
+          <ProductTable className="product-table" cart={ products } />
+          <h3
+            className="order-total-price"
+            data-testid={ getTestId('element-order-total-price') }
+          >
+            Total: R$
+            {' '}
+            {totalPrice.replace(/\./, ',')}
+          </h3>
         </div>
       </div>
-    </>
+    </div>
+
   );
 }
 

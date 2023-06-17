@@ -72,41 +72,38 @@ function CheckoutPage() {
   };
 
   return (
-    <>
-      <Navbar />
-      <div className="checkout-container">
-        <div className="cart-container">
-          <h2 className="checkout-heading">Finalizar Pedido</h2>
-          <div className="checkout-info">
-            <ProductTable cart={ cart } handleRemoveFromCart={ handleRemoveFromCart } />
-            <span className="total-price first">
-              Total: R$
-              {' '}
-            </span>
-            <span
-              className="total-price second"
-              data-testid="customer_checkout__element-order-total-price"
-            >
-              {totalPrice.toFixed(2).replace('.', ',')}
-            </span>
-          </div>
-        </div>
-        <div className="delivery-container">
-          <h2 className="checkout-heading">Detalhes e Endereço para Entrega</h2>
-          <div className="checkout-info">
-            <DeliveryInfoForm
-              selectedSeller={ selectedSeller }
-              setSelectedSeller={ setSelectedSeller }
-              address={ address }
-              setAddress={ setAddress }
-              addressNumber={ addressNumber }
-              setAddressNumber={ setAddressNumber }
-              sendOrder={ sendOrder }
-            />
-          </div>
+    <div className="checkout-container">
+      <div className="cart-container">
+        <h2 className="checkout-heading">Finalizar Pedido</h2>
+        <div className="checkout-info">
+          <ProductTable cart={ cart } handleRemoveFromCart={ handleRemoveFromCart } />
+          <span className="total-price first">
+            Total: R$
+            {' '}
+          </span>
+          <span
+            className="total-price second"
+            data-testid="customer_checkout__element-order-total-price"
+          >
+            {totalPrice.toFixed(2).replace('.', ',')}
+          </span>
         </div>
       </div>
-    </>
+      <div className="delivery-container">
+        <h2 className="checkout-heading">Detalhes e Endereço para Entrega</h2>
+        <div className="checkout-info">
+          <DeliveryInfoForm
+            selectedSeller={ selectedSeller }
+            setSelectedSeller={ setSelectedSeller }
+            address={ address }
+            setAddress={ setAddress }
+            addressNumber={ addressNumber }
+            setAddressNumber={ setAddressNumber }
+            sendOrder={ sendOrder }
+          />
+        </div>
+      </div>
+    </div>
   );
 }
 

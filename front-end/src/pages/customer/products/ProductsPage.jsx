@@ -83,7 +83,6 @@ function ProductsPage() {
 
   return (
     <>
-      <Navbar />
       <div className="product-list-container">
         <div className="product-list">
           {products.map((product) => (
