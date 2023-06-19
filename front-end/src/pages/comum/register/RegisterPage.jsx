@@ -64,7 +64,7 @@ function RegisterPage() {
     }
 
     try {
-      const response = await fetch('http://localhost:3001/register', {
+      const response = await fetch('https://cheerful-teaching-production.up.railway.app/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
