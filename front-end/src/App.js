@@ -22,7 +22,7 @@ function App() {
           <Route exact path="/customer/orders/:id" component={ OrderDetail } />
           <Route exact path="/seller/orders" component={ OrdersPage } />
           <Route exact path="/seller/orders/:id" component={ OrderDetail } />
-          <Route exact path="/">
+          <Route exact path="/project-delivery-app">
             <Redirect to="/login" />
           </Route>
         </DefaultLayout>

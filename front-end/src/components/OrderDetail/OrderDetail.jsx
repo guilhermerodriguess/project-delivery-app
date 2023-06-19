@@ -32,9 +32,9 @@ function OrderDetailPage() {
     const getOrder = async () => {
       let response;
       if (isSeller) {
-        response = await axios.get(`http://localhost:3001/seller/order/${id}`);
+        response = await axios.get(`https://cheerful-teaching-production.up.railway.app/seller/order/${id}`);
       } else {
-        response = await axios.get(`http://localhost:3001/customer/order/${id}`);
+        response = await axios.get(`https://cheerful-teaching-production.up.railway.app/customer/order/${id}`);
       }
       setOrder(response.data.order);
 
@@ -57,7 +57,7 @@ function OrderDetailPage() {
 
   const handleDeliveryStatus = async (newStatus) => {
     try {
-      await axios.put(`http://localhost:3001/customer/orders/${id}`, { status: newStatus });
+      await axios.put(`https://cheerful-teaching-production.up.railway.app/customer/orders/${id}`, { status: newStatus });
       setOrder((prevOrder) => ({
         ...prevOrder,
         status: newStatus,

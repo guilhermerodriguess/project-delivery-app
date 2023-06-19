@@ -16,7 +16,7 @@ function DeliveryInfoForm({
 
   const fetchSellers = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/seller');
+      const response = await axios.get('https://cheerful-teaching-production.up.railway.app/seller');
       const sellerOptions = response.data.map((seller) => ({
         id: seller.id,
         name: seller.name,

@@ -14,9 +14,9 @@ function OrdersPage() {
       try {
         let response;
         if (isSellerPage) {
-          response = await axios.get(`http://localhost:3001/seller/orders/${userId}`);
+          response = await axios.get(`https://cheerful-teaching-production.up.railway.app/seller/orders/${userId}`);
         } else {
-          response = await axios.get(`http://localhost:3001/customer/orders/${userId}`);
+          response = await axios.get(`https://cheerful-teaching-production.up.railway.app/customer/orders/${userId}`);
         }
         setOrders(response.data.orders);
       } catch (error) {
@@ -31,7 +31,7 @@ function OrdersPage() {
     <div>
       <div className="orders">
         {orders.map((order) => (
-          <Link key={ order.id } to={ `/customer/orders/${order.id}` }>
+          <Link key={ order.id } to={ `${isSellerPage ? '/seller' : '/customer'}/orders/${order.id}` }>
             <OrderCard order={ order } showAddress={ isSellerPage } />
           </Link>
         ))}

@@ -14,7 +14,7 @@ function OrderDetailPage() {
 
   useEffect(() => {
     const getOrder = async () => {
-      const response = await axios.get(`http://localhost:3001/customer/order/${id}`);
+      const response = await axios.get(`https://cheerful-teaching-production.up.railway.app/customer/order/${id}`);
       setOrder(response.data.order);
 
       const orderProducts = response.data.order.products;
@@ -37,7 +37,7 @@ function OrderDetailPage() {
 
   const handleDeliveryCheck = async () => {
     try {
-      await axios.put(`http://localhost:3001/customer/orders/${id}`, { status: 'Entregue' });
+      await axios.put(`https://cheerful-teaching-production.up.railway.app/customer/orders/${id}`, { status: 'Entregue' });
       setOrder((prevOrder) => ({
         ...prevOrder,
         status: 'Entregue',
