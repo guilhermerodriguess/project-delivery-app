@@ -7,7 +7,7 @@ function DefaultLayout({ children }) {
   return (
     <div className="default-layout">
       <Navbar />
-      <main className="main">
+      <main>
         {children}
       </main>
     </div>

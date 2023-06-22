@@ -1,6 +1,6 @@
+/* stylelint-disable max-line-length */
 .order-details-container {
   font-size: 22px;
-  padding: 2% 10%;
 }
 
 .order-details-content {
@@ -8,6 +8,8 @@
   border: 1px solid #b1c2be;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   height: 80%;
+  padding: 1%;
+
 }
 
 .order-details-info {
@@ -57,7 +59,6 @@
 
 table {
   margin: 0;
-  padding: 20px;
   text-align: center;
   width: 100%;
 }

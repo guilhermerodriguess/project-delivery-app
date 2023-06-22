@@ -33,7 +33,7 @@ function DeliveryInfoForm({
 
   return (
     <form className="checkout-form-container">
-      <div>
+      <div className="label-container">
         <label htmlFor="seller" className="form-label">
           Vendedor:
           <select
@@ -78,7 +78,6 @@ function DeliveryInfoForm({
           />
         </label>
       </div>
-
       <button
         type="button"
         data-testid="customer_checkout__button-submit-order"

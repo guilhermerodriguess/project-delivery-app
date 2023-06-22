@@ -76,16 +76,14 @@ function CheckoutPage() {
         <h2 className="checkout-heading">Finalizar Pedido</h2>
         <div className="checkout-info">
           <ProductTable cart={ cart } handleRemoveFromCart={ handleRemoveFromCart } />
-          <span className="total-price first">
-            Total: R$
-            {' '}
-          </span>
-          <span
-            className="total-price second"
+          <div
+            className="total-price"
             data-testid="customer_checkout__element-order-total-price"
           >
+            Total: R$
+            {' '}
             {totalPrice.toFixed(2).replace('.', ',')}
-          </span>
+          </div>
         </div>
       </div>
       <div className="delivery-container">

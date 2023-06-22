@@ -31,7 +31,12 @@ function OrdersPage() {
     <div>
       <div className="orders">
         {orders.map((order) => (
-          <Link key={ order.id } to={ `${isSellerPage ? '/seller' : '/customer'}/orders/${order.id}` }>
+          <Link
+            key={ order.id }
+            to={
+              `${isSellerPage ? '/seller' : '/customer'}/orders/${order.id}`
+            }
+          >
             <OrderCard order={ order } showAddress={ isSellerPage } />
           </Link>
         ))}

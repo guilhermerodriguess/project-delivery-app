@@ -5,6 +5,9 @@
   font-weight: 700;
   height: 80px;
   justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 }
 
 .navbar-left {

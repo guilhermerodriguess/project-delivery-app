@@ -20,9 +20,9 @@
 
 
 .form-input-first, .form-input-second, .form-input-third {
+  display: block;
   font-size: 24px;
   height: 40px;
-  margin-top: 20px;
 }
 
 .form-input-second {
@@ -33,6 +33,11 @@
   width: 100px;
 }
 
+.label-container {
+  display: flex;
+  justify-content: space-around;
+}
+
 .form-label {
-  padding: 10px;
+  text-align: start;
 }
