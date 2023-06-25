@@ -85,6 +85,9 @@ function LoginPage() {
 
       axios.defaults.headers.common.Authorization = token; // Define o token no cabeçalho das requisições
 
+      if (role === 'administrator') {
+        history.push('/admin/users');
+      }
       if (role === 'seller') {
         history.push('/seller/orders');
       } else {
