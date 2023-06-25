@@ -16,7 +16,11 @@ function DeliveryInfoForm({
 
   const fetchSellers = async () => {
     try {
-      const response = await axios.get('https://cheerful-teaching-production.up.railway.app/seller');
+      const endpoint = process.env.NODE_ENV === 'development'
+        ? process.env.REACT_APP_LOCAL_ENDPOINT
+        : process.env.REACT_APP_PRODUCTION_ENDPOINT;
+
+      const response = await axios.get(`${endpoint}/seller`);
       const sellerOptions = response.data.map((seller) => ({
         id: seller.id,
         name: seller.name,

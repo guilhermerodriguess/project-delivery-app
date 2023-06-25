@@ -16,6 +16,9 @@ function LoginPage() {
     const user = JSON.parse(localStorage.getItem('user'));
 
     if (user && user.token) {
+      if (user.role === 'administratot') {
+        history.push('admin/users');
+      }
       if (user.role === 'seller') {
         history.push('/seller/orders');
       } else {
@@ -66,7 +69,11 @@ function LoginPage() {
     }
 
     try {
-      const response = await axios.post('https://cheerful-teaching-production.up.railway.app/login', {
+      const endpoint = process.env.NODE_ENV === 'development'
+        ? process.env.REACT_APP_LOCAL_ENDPOINT
+        : process.env.REACT_APP_PRODUCTION_ENDPOINT;
+
+      const response = await axios.post(`${endpoint}/login`, {
         email: emailValue,
         password: passwordValue,
       });
@@ -87,8 +94,7 @@ function LoginPage() {
 
       if (role === 'administrator') {
         history.push('/admin/users');
-      }
-      if (role === 'seller') {
+      } else if (role === 'seller') {
         history.push('/seller/orders');
       } else {
         history.push('/customer/products');

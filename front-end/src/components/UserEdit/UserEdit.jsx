@@ -9,10 +9,6 @@ function UserEditPage() {
   const history = useHistory();
   const { id } = useParams();
 
-  useEffect(() => {
-    getUser();
-  }, []);
-
   const getUser = async () => {
     try {
       const response = await axios.get(`/admin/users/${id}`);
@@ -24,6 +20,10 @@ function UserEditPage() {
       console.error('Failed to fetch user:', error);
     }
   };
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import ProductTable from '../../../components/ProductTable/ProductTable';
-import './OrderDetailsPage.css';
 
 function OrderDetailPage() {
   const { id } = useParams();
@@ -12,9 +11,13 @@ function OrderDetailPage() {
   const [totalPrice, setTotalPrice] = useState(0.0);
   const [seller, setSellerId] = useState({});
 
+  const endpoint = process.env.NODE_ENV === 'development'
+    ? process.env.REACT_APP_LOCAL_ENDPOINT
+    : process.env.REACT_APP_PRODUCTION_ENDPOINT;
+
   useEffect(() => {
     const getOrder = async () => {
-      const response = await axios.get(`https://cheerful-teaching-production.up.railway.app/customer/order/${id}`);
+      const response = await axios.get(`${endpoint}/customer/order/${id}`);
       setOrder(response.data.order);
 
       const orderProducts = response.data.order.products;
@@ -37,7 +40,7 @@ function OrderDetailPage() {
 
   const handleDeliveryCheck = async () => {
     try {
-      await axios.put(`https://cheerful-teaching-production.up.railway.app/customer/orders/${id}`, { status: 'Entregue' });
+      await axios.put(`${endpoint}/customer/orders/${id}`, { status: 'Entregue' });
       setOrder((prevOrder) => ({
         ...prevOrder,
         status: 'Entregue',

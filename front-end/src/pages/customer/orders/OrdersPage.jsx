@@ -12,11 +12,15 @@ function OrdersPage() {
     const fetchOrders = async () => {
       const userId = JSON.parse(localStorage.getItem('userId'));
       try {
+        const endpoint = process.env.NODE_ENV === 'development'
+          ? process.env.REACT_APP_LOCAL_ENDPOINT
+          : process.env.REACT_APP_PRODUCTION_ENDPOINT;
+
         let response;
         if (isSellerPage) {
-          response = await axios.get(`https://cheerful-teaching-production.up.railway.app/seller/orders/${userId}`);
+          response = await axios.get(`${endpoint}/seller/orders/${userId}`);
         } else {
-          response = await axios.get(`https://cheerful-teaching-production.up.railway.app/customer/orders/${userId}`);
+          response = await axios.get(`${endpoint}/customer/orders/${userId}`);
         }
         setOrders(response.data.orders);
       } catch (error) {

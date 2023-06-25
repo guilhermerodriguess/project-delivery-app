@@ -21,6 +21,10 @@ function OrderDetailPage() {
 
   const ORDER_ID_LENGTH = 4;
 
+  const endpoint = process.env.NODE_ENV === 'development'
+    ? process.env.REACT_APP_LOCAL_ENDPOINT
+    : process.env.REACT_APP_PRODUCTION_ENDPOINT;
+
   const getTestId = (baseTestId) => {
     if (isSeller) {
       return `seller_order_details__${baseTestId}`;
@@ -32,9 +36,9 @@ function OrderDetailPage() {
     const getOrder = async () => {
       let response;
       if (isSeller) {
-        response = await axios.get(`https://cheerful-teaching-production.up.railway.app/seller/order/${id}`);
+        response = await axios.get(`${endpoint}/seller/order/${id}`);
       } else {
-        response = await axios.get(`https://cheerful-teaching-production.up.railway.app/customer/order/${id}`);
+        response = await axios.get(`${endpoint}/customer/order/${id}`);
       }
       setOrder(response.data.order);
 
@@ -57,7 +61,7 @@ function OrderDetailPage() {
 
   const handleDeliveryStatus = async (newStatus) => {
     try {
-      await axios.put(`https://cheerful-teaching-production.up.railway.app/customer/orders/${id}`, { status: newStatus });
+      await axios.put(`${endpoint}/customer/orders/${id}`, { status: newStatus });
       setOrder((prevOrder) => ({
         ...prevOrder,
         status: newStatus,

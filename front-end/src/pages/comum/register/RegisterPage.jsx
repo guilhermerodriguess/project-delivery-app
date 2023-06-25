@@ -64,7 +64,11 @@ function RegisterPage() {
     }
 
     try {
-      const response = await fetch('https://cheerful-teaching-production.up.railway.app/register', {
+      const endpoint = process.env.NODE_ENV === 'development'
+        ? process.env.REACT_APP_LOCAL_ENDPOINT
+        : process.env.REACT_APP_PRODUCTION_ENDPOINT;
+
+      const response = await fetch(`${endpoint}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

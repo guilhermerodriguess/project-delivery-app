@@ -15,7 +15,12 @@ function ProductsPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('https://cheerful-teaching-production.up.railway.app/customer/products');
+        const endpoint = process.env.NODE_ENV === 'development'
+          ? process.env.REACT_APP_LOCAL_ENDPOINT
+          : process.env.REACT_APP_PRODUCTION_ENDPOINT;
+
+        console.log(endpoint);
+        const response = await axios.get(`${endpoint}/customer/products`);
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);

@@ -5,10 +5,6 @@ import { Link } from 'react-router-dom';
 function UserListPage() {
   const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    getUsers();
-  }, []);
-
   const getUsers = async () => {
     try {
       const response = await axios.get('/admin/users');
@@ -17,6 +13,10 @@ function UserListPage() {
       console.error('Failed to fetch users:', error);
     }
   };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   return (
     <div>

@@ -60,7 +60,11 @@ function CheckoutPage() {
         })),
       };
 
-      const response = await axios.post('https://cheerful-teaching-production.up.railway.app/customer/orders', { order });
+      const endpoint = process.env.NODE_ENV === 'development'
+        ? process.env.REACT_APP_LOCAL_ENDPOINT
+        : process.env.REACT_APP_PRODUCTION_ENDPOINT;
+
+      const response = await axios.post(`${endpoint}/customer/orders`, { order });
 
       const { orderId } = response.data;
 
