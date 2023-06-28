@@ -17,6 +17,8 @@ function Navbar() {
   const userData = JSON.parse(localStorage.getItem('user'));
 
   const isSeller = userData?.role === 'seller';
+  const isAdmin = userData?.role === 'administrator';
+  const isCustomer = userData?.role === 'customer';
 
   // Extrai o nome da pessoa usuária dos dados obtidos
   const userName = userData?.name || 'Nome do Usuário';
@@ -24,16 +26,17 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="navbar-left">
-        {isSeller ? (
+        {isSeller && (
           <Link
             to="/seller/orders"
             data-testid="customer_products__element-navbar-link-orders"
-            className={ `nav-item ${activeLink === 'orders' ? 'active' : ''}` }
+            className="nav-item active"
             onClick={ () => handleLinkClick('orders') }
           >
             PEDIDOS
           </Link>
-        ) : (
+        )}
+        {isCustomer && (
           <>
             <Link
               to="/customer/products"
@@ -52,6 +55,16 @@ function Navbar() {
               MEUS PEDIDOS
             </Link>
           </>
+        )}
+        {isAdmin && (
+          <Link
+            to="/admin/users"
+            data-testid="admin_users__element-navbar-link-users"
+            className="nav-item active"
+            onClick={ () => handleLinkClick('users') }
+          >
+            GERENCIAR USUÁRIOS
+          </Link>
         )}
       </div>
       <div className="navbar-right">

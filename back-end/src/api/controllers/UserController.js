@@ -1,4 +1,5 @@
 const { User } = require('../../database/models');
+const RegisterService = require('../services/RegisterService');
 
 const UserController = {
   async getAllUsers(req, res) {
@@ -12,15 +13,21 @@ const UserController = {
   },
   
   async createUser(req, res) {
-    try {
-      const { name, email, password } = req.body;
-      const newUser = await User.create({ name, email, password });
-      res.status(201).json(newUser);
-    } catch (error) {
-      console.error('Error creating user:', error);
-      res.status(500).json({ error: 'Failed to create user' });
-    }
-  },
+      const { name, email, password, role } = req.body;
+  
+      try {
+        const newUser = await RegisterService.register(name, email, password, role);
+  
+        if (!newUser) {
+          return res.status(409).json({ error: 'Nome ou email já em uso' });
+        }
+  
+        return res.status(201).json({ message: 'Usuário registrado com sucesso' });
+      } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: 'Ocorreu um erro ao registrar o usuário' });
+      }
+    },
   
   async updateUser(req, res) {
     try {

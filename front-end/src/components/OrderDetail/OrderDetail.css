@@ -62,7 +62,7 @@ table {
 }
 
 .order-details-products {
-  align-items: end;
+  align-items: flex-end;
   display: flex;
   flex-direction: column;
   padding: 1%;

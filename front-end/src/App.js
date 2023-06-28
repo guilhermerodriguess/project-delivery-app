@@ -8,6 +8,7 @@ import OrdersPage from './pages/customer/orders/OrdersPage';
 import OrderDetail from './components/OrderDetail/OrderDetail';
 import './App.css';
 import DefaultLayout from './pages/layouts/defaultLayout';
+import UserList from './pages/UserList/UserListPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/register" component={ RegisterPage } />
         <Route exact path="/login" component={ LoginPage } />
         <DefaultLayout>
+          <Route exact path="/admin/users" component={ UserList } />
           <Route exact path="/customer/products" component={ ProductsPage } />
           <Route exact path="/customer/checkout" component={ CheckoutPage } />
           <Route exact path="/customer/orders" component={ OrdersPage } />

@@ -17,6 +17,7 @@ const authMiddleware = (req, res, next) => {
     // Chama o próximo middleware ou rota
     next();
   } catch (error) {
+    console.log(error);
     return res.status(401).json({ error: 'Token de autenticação inválido' });
   }
 };

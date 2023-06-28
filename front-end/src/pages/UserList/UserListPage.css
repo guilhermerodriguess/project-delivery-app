@@ -1,0 +1,6 @@
+.btn-remove {
+  background-color: inherit;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+}
