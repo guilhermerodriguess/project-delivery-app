@@ -131,74 +131,94 @@ function UserListPage() {
 
   return (
     <div>
-      <h1>User List</h1>
+      <h1>Cadastrar novo usuário</h1>
       {errorMessage && (
         <div>{errorMessage}</div>
       )}
-      <form onSubmit={ handleAddUser }>
-        <input
-          type="text"
-          placeholder="Name"
-          name="name"
-          value={ newUser.name }
-          onChange={ handleInputChange }
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          name="email"
-          value={ newUser.email }
-          onChange={ handleInputChange }
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          value={ newUser.password }
-          onChange={ handleInputChange }
-        />
-        <select
-          name="role"
-          value={ newUser.role }
-          onChange={ handleInputChange }
-        >
-          <option value="">Select Role</option>
-          <option value="administrator">Administrator</option>
-          <option value="seller">Seller</option>
-          <option value="customer">Customer</option>
-        </select>
-        <button type="submit">Add User</button>
-      </form>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Tipo</th>
-            <th>Excluir</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={ user.id }>
-              <td>{user.id}</td>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.role}</td>
-              <td>
-                <button
-                  className="btn-remove"
-                  type="button"
-                  onClick={ () => handleDeleteUser(user.id) }
-                >
-                  Excluir
-                </button>
-              </td>
+      <div className="form-user-container">
+        <form className="admin_former-register" onSubmit={ handleAddUser }>
+          <label htmlFor="name">
+            Nome
+            <input
+              id="name"
+              type="text"
+              placeholder="Nome e sobrenome"
+              name="name"
+              value={ newUser.name }
+              onChange={ handleInputChange }
+            />
+          </label>
+          <label htmlFor="email">
+            Email
+            <input
+              id="email"
+              type="email"
+              placeholder="seu-email@site.com.br"
+              name="email"
+              value={ newUser.email }
+              onChange={ handleInputChange }
+            />
+          </label>
+          <label htmlFor="password">
+            Senha
+            <input
+              id="password"
+              type="password"
+              placeholder="******"
+              name="password"
+              value={ newUser.password }
+              onChange={ handleInputChange }
+            />
+          </label>
+          <label htmlFor="role">
+            Tipo
+            <select
+              id="role"
+              name="role"
+              value={ newUser.role }
+              onChange={ handleInputChange }
+            >
+              <option value="seller">Seller</option>
+              <option value="customer">Customer</option>
+              <option value="administrator">Administrator</option>
+            </select>
+          </label>
+          <button type="submit">Cadastrar</button>
+        </form>
+      </div>
+      <h1>Lista de usuários</h1>
+      <div className="user-list-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Tipo</th>
+              <th>Excluir</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr key={ user.id }>
+                <td>{user.id}</td>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.role}</td>
+                <td>
+                  <button
+                    className="btn-remove"
+                    type="button"
+                    onClick={ () => handleDeleteUser(user.id) }
+                  >
+                    Excluir
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

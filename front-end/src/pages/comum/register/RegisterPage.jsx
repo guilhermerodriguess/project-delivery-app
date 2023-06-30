@@ -142,7 +142,7 @@ function RegisterPage() {
           data-testid="common_register__button-register"
           disabled={ !isFormValid() }
         >
-          Registrar
+          CADASTRAR
         </button>
       </form>
       <div

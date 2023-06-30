@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import './LoginPage.css';
+import logo from '../../../images/logo.png';
 
 function LoginPage() {
   const [emailValue, setEmailValue] = useState('');
@@ -106,11 +107,13 @@ function LoginPage() {
 
   return (
     <div className="login-container">
-      <h1>Login</h1>
+      <img className="logo" src={ logo } alt="" />
+      <h1>Delivery App</h1>
       <form className="form-container" onSubmit={ handleLogin }>
         <div className="input-wrapper">
           <label htmlFor="email">
             <input
+              placeholder="email@delivery.com"
               type="email"
               id="email"
               value={ emailValue }
@@ -122,6 +125,7 @@ function LoginPage() {
         <div className="input-wrapper">
           <label htmlFor="password">
             <input
+              placeholder="******"
               type="password"
               id="password"
               value={ passwordValue }
@@ -139,7 +143,7 @@ function LoginPage() {
           Login
         </button>
         <button
-          className="button-register"
+          className="button-dont-have"
           type="button"
           data-testid="common_login__button-register"
         >
