@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 /* eslint-disable react-func/max-lines-per-function */
 import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
@@ -133,7 +134,7 @@ function UserListPage() {
     <div>
       <h1>Cadastrar novo usuário</h1>
       {errorMessage && (
-        <div>{errorMessage}</div>
+        <div className="error-message register-error">{errorMessage}</div>
       )}
       <div className="form-user-container">
         <form className="admin_former-register" onSubmit={ handleAddUser }>

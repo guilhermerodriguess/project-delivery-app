@@ -34,7 +34,7 @@
   border-radius: 4px;
   color: var(--text-light);
   font-size: 24px;
-  height: 40px;
+  text-align: center;
   width: 50%;
 }
 
@@ -43,4 +43,9 @@
   border: 1px solid #b1c2be;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   padding: 1%;
+}
+
+.register-error {
+  font-size: 24px;
+  text-align: center;
 }
