@@ -77,10 +77,48 @@
 }
 
 .button-add {
-  border-radius: 10px 0 0 10px;
+  border-radius: 0 10px 10px 0;
 }
 
 .button-rm {
-  border-radius: 0 010px 10px 0;
+  border-radius: 10px 0 0 10px;
 }
 
+@media screen and ( max-width : 768px ) {
+
+  .product-card {
+    width: 134px;
+  }
+
+  .product-card-img {
+    height: 157px;
+  }
+
+  .product-card-price {
+    font-size: 20px;
+    padding: 5px;
+  }
+
+  .product-card-info {
+    padding: 10px;
+  }
+
+  .product-card-name {
+    font-size: 20px;
+    letter-spacing: 0;
+    margin: 0 0 10px;
+  }
+
+  .product-card-controls {
+    width: 80%;
+  }
+
+  .product-card-controls button {
+    font-size: 34px;
+    padding: 1%;
+  }
+
+  .product-card-controls input {
+    font-size: 20px;
+  }
+}

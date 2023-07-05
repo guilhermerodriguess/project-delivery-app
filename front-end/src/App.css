@@ -17,3 +17,9 @@ main {
   max-width: 100vw;
   box-sizing: border-box;
 }
+
+@media screen and ( max-width : 768px ) {
+  main {
+    padding: calc(4% + 60px) 4% 4% 4%;
+  }
+}

@@ -15,7 +15,6 @@
   font-size: 28px;
   height: 100%;
   line-height: 80px;
-  vertical-align: center;
 }
 
 .nav-item {
@@ -45,4 +44,12 @@
 .logout {
   background-color: var(--quaternary-color);
   font-weight: 500;
+}
+
+@media screen and ( max-width : 768px ) {
+
+  .navbar {
+    height: 60px;
+  }
+
 }

@@ -56,12 +56,12 @@ function ProductCard({ product, handleAddToCart, handleRemoveFromCart }) {
         </h3>
         <div className="product-card-controls">
           <button
-            className="button-add"
+            className="button-rm"
             type="button"
-            onClick={ handleAddQuantity }
-            data-testid={ `customer_products__button-card-add-item-${product.id}` }
+            onClick={ handleRemoveQuantity }
+            data-testid={ `customer_products__button-card-rm-item-${product.id}` }
           >
-            +
+            -
           </button>
           <input
             type="text"
@@ -70,12 +70,12 @@ function ProductCard({ product, handleAddToCart, handleRemoveFromCart }) {
             data-testid={ `customer_products__input-card-quantity-${product.id}` }
           />
           <button
-            className="button-rm"
+            className="button-add"
             type="button"
-            onClick={ handleRemoveQuantity }
-            data-testid={ `customer_products__button-card-rm-item-${product.id}` }
+            onClick={ handleAddQuantity }
+            data-testid={ `customer_products__button-card-add-item-${product.id}` }
           >
-            -
+            +
           </button>
         </div>
       </div>
